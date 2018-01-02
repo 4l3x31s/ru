@@ -1,0 +1,38 @@
+<ion-view view-title="Actividades Económicas">
+  <form ng-submit="">
+  <ion-content scroll="true">
+
+      <div class="item item-image banner">
+        <img class="full-image"  src="img/img_inmueble_deuda.png">
+      </div>
+      <div class="btn-modulo">
+        <div class="btn-flotante">
+          <img src="img/ico_deuda_inm.png" width="90">
+        </div>
+      </div>
+      <br />
+      <div class="row titulo-container">
+        <h4 class="col titulo">Consulta General</h4>
+      </div>
+
+        <div class="list">
+          <label class="item item-input border-top0 item-floating-label">
+            <span class="input-label">Número Inmueble</span>
+            <input type="text" placeholder="Número Inmueble">
+          </label>
+          <label class="item item-input item-select lblselect">
+            <select class="lstselect">
+              <option value="" disabled selected hidden>Gobierno Municipal</option>
+              <option>La Paz</option>
+              <option selected>Santa Cruz</option>
+            </select>
+          </label>
+        </div>
+
+
+  </ion-content>
+    <button class="btn-floating btn-large waves-effect waves-light btn-assertive" id="send" ng-click="showAlert()">
+      <i class="ion-android-send"></i>
+    </button>
+  </form>
+</ion-view>

@@ -1,0 +1,41 @@
+<ion-view view-title="Tasas y Otros Ingresos">
+  <ion-content scroll="false">
+    <div class="contenedor scroll-content ionic-scroll overflow-scroll">
+        <form name="busGralFormInm" novalidate>
+          <div class="item item-image banner">
+            <img class="full-image"  src="img/img_tasas_deuda.png">
+          </div>
+          <div class="btn-modulo">
+            <div class="btn-flotante">
+              <img src="img/ico_deuda_tas.png" width="90">
+            </div>
+          </div>
+          <br />
+          <div class="row titulo-container">
+            <h4 class="col titulo">Consulta Deuda</h4>
+          </div>
+          <div class="list">
+            <label class="item item-input border-top0 item-floating-label">
+              <span class="input-label">Número Identificador</span>
+              <input ng-pattern="validarTasa" type="number" ng-value="identificadorTasa"  ng-minlength="4" ng-maxlength="10" placeholder="Número Identificador. Ej. 144584"  ng-model="numTasa" required>
+            </label>
+            <label class="item item-input item-select lblselect">
+              <select class="lstselect" ng-model="codTasa"
+                      ng-options="tasa.id as tasa.titulo for tasa in tipoTasas" required>
+                <option value="" disabled selected hidden>Seleccione Criterio</option>
+              </select>
+            </label>
+            <label class="item item-input item-select lblselect">
+              <select class="lstselect" ng-model="codAlcaldia"
+                      ng-options="alcaldia.codigo as alcaldia.descripcion for alcaldia in alcaldias" required>
+                <option value="" disabled selected hidden>Seleccione Gobierno Municipal</option>
+              </select>
+            </label>
+          </div>
+          <button ng-disabled="busGralFormInm.$invalid" class="btn-floating btn-large waves-effect waves-light btn-assertive" id="send" ng-click="buscarTasa(numTasa,codAlcaldia,codTasa)">
+            <i class="ion-android-send"></i>
+          </button>
+        </form>
+    </div>
+  </ion-content>
+</ion-view>

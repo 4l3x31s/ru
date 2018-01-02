@@ -1,0 +1,124 @@
+<ion-view view-title="DATOS TÉCNICOS">
+  <ion-nav-bar class="bar-positive">
+    <ion-nav-buttons side="left">
+      <button ng-if="!muestraBack" class="button button-icon button-clear ion-navicon" menu-toggle="left">
+      </button>
+      <button ng-if="muestraBack" class="button button-icon button-clear ion-ios-arrow-back" ng-click="myGoBack()">
+      </button>
+    </ion-nav-buttons>
+  </ion-nav-bar>
+  <ion-content scroll="true">
+
+        <div class="item item-divider titulo_bloque">DATOS IDENTIFICACIÓN INMUEBLE</div>
+        <div class="item item-content">
+          <div class="row marginbottom0">
+            <div class="col-50 etiqueta">Número Inmueble</div>
+            <div class="col-50 calm wrap">{{respuestaWS.beanDatosIdentificacion.numero}}</div>
+          </div>
+          <div class="row marginbottom0">
+            <div class="col-50 etiqueta">Código Catastral</div>
+            <div class="col-50 calm wrap" ng-if="respuestaWS.beanDatosIdentificacion.codCatastral">{{respuestaWS.beanDatosIdentificacion.codCatastral}}</div>
+            <div class="col-50 calm wrap" ng-if="!respuestaWS.beanDatosIdentificacion.codCatastral">--</div>
+          </div>
+          <div class="row marginbottom0">
+            <div class="col-50 etiqueta">Gobierno Municipal</div>
+            <div class="col-50 calm wrap">{{respuestaWS.beanDatosIdentificacion.alcaldia}}</div>
+          </div>
+        </div>
+        <div class="item item-divider titulo_bloque">DATOS PROPIETARIO</div>
+        <div class="item item-content">
+          <div class="row marginbottom0 multilinea">
+            <div class="col-50 etiqueta wrap">Documento de Identificación</div>
+            <div class="col-50 calm wrap" ng-if="respuestaWS.beanPropiedades.propiedades[0].tipoContribuyente=='JU'">{{respuestaWS.beanPropiedades.propiedades[0].tipoDocumento}} {{respuestaWS.beanPropiedades.propiedades[0].documento}}
+            </div>
+            <div class="col-50 calm wrap" ng-if="respuestaWS.beanPropiedades.propiedades[0].tipoContribuyente=='NA'">{{respuestaWS.beanPropiedades.propiedades[0].tipoDocumento}} {{respuestaWS.beanPropiedades.propiedades[0].documento}} {{respuestaWS.beanPropiedades.propiedades[0].expedido}}
+            </div>
+          </div>
+          <div class="row marginbottom0">
+            <div class="col-50 etiqueta wrap">Nombre/Razón Social</div>
+            <div class="col-50 calm wrap" ng-if="respuestaWS.beanPropiedades.propiedades[0].nombreCompleto">{{respuestaWS.beanPropiedades.propiedades[0].nombreCompleto}}</div>
+
+            <div class="col-50 calm wrap" ng-if="!respuestaWS.beanPropiedades.propiedades[0].nombreCompleto">--</div>
+          </div>
+          <div class="row marginbottom0">
+            <div class="col-50 etiqueta">PMC</div>
+            <div class="col-50 calm wrap" ng-if="respuestaWS.beanPropiedades.propiedades[0].pmc">{{respuestaWS.beanPropiedades.propiedades[0].pmc}}</div>
+            <div class="col-50 calm wrap" ng-if="!respuestaWS.beanPropiedades.propiedades[0].pmc">--</div>
+          </div>
+          <div class="row marginbottom0">
+            <div class="col-50 etiqueta">Domicilio Legal</div>
+            <div class="col-50 calm wrap" ng-if="respuestaWS.beanPropiedades.propiedades[0].direccionCorta">{{respuestaWS.beanPropiedades.propiedades[0].direccionCorta}}</div>
+            <div class="col-50 calm wrap" ng-if="!respuestaWS.beanPropiedades.propiedades[0].direccionCorta">--</div>
+          </div>
+          <div class="row marginbottom0" ng-if="respuestaWS.beanPropiedades.propiedades[0].porcentaje">
+            <div class="col-50 etiqueta">Porcentaje</div>
+            <div class="col-50 calm wrap" ng-if="respuestaWS.beanPropiedades.propiedades[0].porcentaje">{{respuestaWS.beanPropiedades.propiedades[0].porcentaje}}</div>
+            <div class="col-50 calm wrap" ng-if="!respuestaWS.beanPropiedades.propiedades[0].porcentaje">--</div>
+          </div>
+        </div>
+        <div ng-if="respuestaWS.beanPropiedades.propiedades[0].copropietarios">
+          <div class="item item-divider titulo_bloque">DATOS COPROPIETARIOS</div>
+          <div class="card grillaDeuda">
+            <div class="item item-divider">
+              <div class="row marginbottom0 cabecera-tabla">
+                <div class="col-50 text-center wrap">Documento Identificación</div>
+                <div class="col-50 text-center wrap">Nombre/Razón Social</div>
+              </div>
+            </div>
+            <div class="item item-text-wrap">
+              <div class="row" ng-repeat="copropietarios in respuestaWS.beanPropiedades.propiedades[0].copropietarios">
+                  <div class="col-50 calm text-center wrap" ng-if="copropietarios.docIdentidad">{{copropietarios.docIdentidad}}</div>
+                  <div class="col-50 calm wrap" ng-if="!copropietarios.docIdentidad">--</div>
+                  <div class="col-50 calm text-center wrap" ng-if="copropietarios.nombreCompleto">{{copropietarios.nombreCompleto}}</div>
+                  <div class="col-50 calm wrap" ng-if="!copropietarios.nombreCompleto">--</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div ng-repeat="data in respuestaWS.lstBeanDetalleInmueble">
+          <div ng-if="data.tipo=='LISTA'">
+            <div class="item item-divider titulo_bloque">{{data.titulo}}</div>
+            <div class="item item-content">
+              <div ng-repeat="listas in data.lista">
+                <div class="row marginbottom0">
+                  <div class="col-50 etiqueta wrap">{{listas.etiqueta}}</div>
+                  <div class="col-50 calm wrap" ng-if="listas.valor">{{listas.valor}}</div>
+                  <div class="col-50 calm wrap" ng-if="!listas.valor">--</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div ng-if="data.tipo=='TABLA'">
+
+            <div class="item item-divider titulo_bloque wrap">{{data.titulo}}</div>
+
+            <div class="card grillaDeuda">
+              <div class="item item-divider">
+                <div class="row marginbottom0 cabecera-tabla">
+                  <div class="col-33 text-center wrap">{{data.tabla[0].listBeanBloques[0].etiqueta}}</div>
+                  <div class="col-33 text-center wrap">{{data.tabla[0].listBeanBloques[1].etiqueta}}</div>
+                  <div class="col-33 text-center wrap">{{data.tabla[0].listBeanBloques[2].etiqueta}}</div>
+                </div>
+              </div>
+
+              <div class="item item-text-wrap">
+                <div ng-repeat="tabla in data.tabla">
+                  <div class="row marginbottom0 deuda" ng-click="datosBloque(tabla)">
+                    <div class="col-33 text-center wrap" ng-if="tabla.listBeanBloques[0].valor">{{tabla.listBeanBloques[0].valor}}</div>
+                    <div class="col-50 calm wrap" ng-if="!tabla.listBeanBloques[0].valor">--</div>
+                    <div class="col-33 text-center wrap" ng-if="tabla.listBeanBloques[1].valor">{{tabla.listBeanBloques[1].valor}}</div>
+                    <div class="col-50 calm wrap" ng-if="!tabla.listBeanBloques[1].valor">--</div>
+                    <div class="col-33 text-center wrap" ng-if="tabla.listBeanBloques[2].valor">{{tabla.listBeanBloques[2].valor}}</div>
+                    <div class="col-50 calm wrap" ng-if="!tabla.listBeanBloques[2].valor">--</div>
+                    <span class="icon ion-chevron-right"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+  </ion-content>
+
+</ion-view>

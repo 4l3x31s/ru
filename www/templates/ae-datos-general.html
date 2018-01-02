@@ -1,0 +1,109 @@
+<ion-view view-title="DATOS DEUDAS">
+  <ion-content scroll="true">
+
+        <div class="item item-divider titulo_bloque wrap">DATOS IDENTIFICACIÓN ACTIVIDAD ECONÓMICA</div>
+        <div class="item item-content">
+          <div class="row marginbottom0">
+            <div class="col-50 etiqueta">Número Actividad</div>
+            <div class="col-50 calm wrap" ng-if="datosIdentificacion.nroActividad">{{datosIdentificacion.nroActividad}}</div>
+            <div class="col-50 calm wrap" ng-if="datosIdentificacion.nroLicencia!='undefined' && !datosIdentificacion.nroLicencia">--</div>
+          </div>
+          <div class="row marginbottom0">
+            <div class="col-50 etiqueta">Licencia</div>
+            <div class="col-50 calm wrap" ng-if="datosIdentificacion.nroLicencia">{{datosIdentificacion.nroLicencia}}</div>
+            <div class="col-50 calm wrap" ng-if="!datosIdentificacion.nroLicencia">--</div>
+          </div>
+          <div class="row marginbottom0">
+            <div class="col-50 etiqueta">Gobierno Municipal</div>
+            <div class="col-50 calm wrap">{{datosIdentificacion.gobiernoMunicipal}}</div>
+          </div>
+        </div>
+        <div class="item item-divider titulo_bloque wrap">DATOS GENERALES ACTIVIDAD ECONÓMICA</div>
+        <div class="item item-content">
+          <div class="row marginbottom0">
+            <div class="col-50 etiqueta">Razón Social</div>
+            <div class="col-50 calm wrap" ng-if="datosGenerales.razonSocial">{{datosGenerales.razonSocial}}</div>
+            <div class="col-50 calm wrap" ng-if="!datosGenerales.razonSocial">--</div>
+          </div>
+          <div class="row marginbottom0">
+            <div class="col-50 etiqueta">Tipo Actividad</div>
+            <div class="col-50 calm wrap" ng-if="datosGenerales.tipoActividad">{{datosGenerales.tipoActividad}}</div>
+            <div class="col-50 calm wrap" ng-if="!datosGenerales.tipoActividad">--</div>
+          </div>
+          <div class="row marginbottom0">
+            <div class="col-50 etiqueta">NIT Actividad</div>
+            <div class="col-50 calm wrap" ng-if="datosGenerales.nitActividad">{{datosGenerales.nitActividad}}</div>
+            <div class="col-50 calm wrap" ng-if="!datosGenerales.nitActividad">--</div>
+          </div>
+        </div>
+        <div class="item item-divider titulo_bloque wrap">DATOS DEUDAS</div>
+        <div ng-if="lstDeudas">
+          <div class="card text-right">
+            <div class="row marginbottom0">
+              <div class="col-75">
+                <label class="assertive textototal">Total Deuda (Bs.)</label>
+              </div>
+              <div class="col-25">
+                <label class="calm montototal" ng-if="montoAcumulado!=0">{{montoAcumulado}}</label>
+                <label class="calm montototal" ng-if="montoAcumulado==0">--</label>
+              </div>
+            </div>
+            <div ng-if="saldoFavor">
+              <div ng-if="saldoFavor!=0" class="row marginbottom0">
+                <div class="col-75">
+                  <label class="assertive textototal">Saldo a favor del contribuyente (Bs.)</label>
+                </div>
+                <div class="col-25">
+                  <label class="calm montototal" >{{saldoFavor}}</label>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <div class="card grillaDeuda">
+            <div class="item item-divider">
+              <div class="row marginbottom0 cabecera-tabla">
+                <div class="col-33 text-center">Gestión</div>
+                <div class="col-33 text-center">Concepto</div>
+                <div class="col-33 text-center">Monto (Bs.)</div>
+              </div>
+            </div>
+            <div class="item item-text-wrap deuda" ng-repeat="deuda in lstDeudas">
+              <div class="row marginbottom0" ng-click="detallePopup(deuda)">
+                <div class="col-33 text-center" ng-if="deuda.gestion!='0'">{{deuda.gestion}}</div>
+                <div class="col-33 text-center" ng-if="deuda.gestion==0">N/A</div>
+                <div class="col-33 text-center">{{deuda.tipoImpuesto}}</div>
+                <div class="col-33 text-right monto-deuda" ng-if="deuda.montoBs!='0'">{{deuda.montoBs}}</div>
+                <div class="col-33 text-right monto-deuda" ng-if="deuda.montoBs==='0'">--</div>
+                <span class="icon ion-chevron-right"></span>
+              </div>
+            </div>
+          </div>
+          <div class="row marginbottom0">
+            <label class="txtsmall balanced">PF - Patente de funcionamiento</label>
+          </div>
+          <div class="row marginbottom0">
+            <label class="txtsmall balanced">RE - Recibo</label>
+          </div>
+          <div class="row marginbottom0">
+            <label class="txtsmall balanced">OP - Multa por Omisión Pago</label>
+          </div>
+        </div>
+        <div ng-if="!lstDeudas">
+          <div class="item item-content txtObservacion margin-botom-close">La actividad económica no tiene deudas pendientes.</div>
+        </div>
+        <div ng-if="lstObservaciones">
+          <div class="item item-divider titulo_bloque wrap">OBSERVACIONES</div>
+          <div ng-repeat="observacion in lstObservaciones">
+            <div class="item item-content txtObservacion margin-botom-close">{{observacion}}</div>
+          </div>
+        </div>
+
+
+  </ion-content>
+  <div class="btn-flotante">
+    <a class="btn-floating btn-large waves-effect waves-light btn-assertive" ng-click="show()" href="">
+      <i class="ion-plus"></i>
+    </a>
+  </div>
+</ion-view>

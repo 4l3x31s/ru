@@ -1,0 +1,43 @@
+<ion-view view-title="Inicio">
+  <ion-content scroll="false" >
+    <div class="contenedor scroll-content ionic-scroll overflow-scroll">
+      <div class="row text-center">
+        <img src="img/LogoRuat2016.svg" class="full-image logoInicio" />
+        <br />
+      </div>
+
+      <div class="row text-center" style="display: block;">
+        <p class="titulo titulo-big">DATOS DE PAGO</p>
+        <br>
+        <div class="item item-content">
+          <div class="row marginbottom0" ng-show="esComprobante">
+            <div class="col-50 etiqueta">Nro. Comprobante</div>
+            <div class="col-50 calm">{{numeroComprobante}}</div>
+          </div>
+
+          <div class="row marginbottom0">
+            <div class="col-50 etiqueta">{{rubro}}</div>
+            <div class="col-50 calm">{{nroObjetoIdentificador}}</div>
+          </div>
+          <div class="row marginbottom0">
+            <div class="col-50 etiqueta">Monto Pagado</div>
+            <div class="col-50 calm">{{montoPagado}} Bs.</div>
+          </div>
+        </div>
+        <br>
+        <div class="iconCheck">
+          <i class="icon ion-checkmark-circled"></i>
+        </div>
+        <br>
+        <div class="row">
+            <a class="button button-block button-assertive menu-general hover-boton-inicio"
+               style="margin:0 10% !important; font-size: 14px !important;"
+               ng-click="abrirPdf()">
+              <div class="iconAncho"><img src="img/file-pdf.png" width="25px"/></div>
+              <p>Descargar {{tipoPDF}}</p>
+            </a>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

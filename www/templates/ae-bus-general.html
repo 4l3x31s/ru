@@ -1,0 +1,55 @@
+<ion-view view-title="Actividades Económicas">
+  <ion-content scroll="false">
+    <div class="contenedor scroll-content ionic-scroll overflow-scroll">
+        <form name="busDetForm" novalidate>
+          <div class="item item-image banner">
+            <img class="full-image" src="img/img_actividad.png">
+          </div>
+          <div class="btn-modulo">
+            <div class="btn-flotante">
+              <img src="img/ico_deuda_aec.png" width="90">
+            </div>
+          </div>
+          <br/>
+          <div class="row titulo-container">
+            <h4 class="col titulo">Consulta Deuda</h4>
+          </div>
+          <div class="list">
+            <label class="item item-input border-top0 item-floating-label">
+              <span class="input-label">Número Licencia/Actividad</span>
+              <input ng-pattern="validarActividadEconomica" type="text"  value="{{identificadorActEco}}" ng-minlength="1" ng-maxlength="25" maxlength="25"
+                     placeholder="Número Licencia/Actividad. Ej(21458)" ng-model="numActEco"
+                     required>
+            </label>
+            <label class="label-small">Tipo Identificador</label>
+            <div class="row marginbottom0">
+              <div class="col-50">
+                <p class="paddingleft15">
+                  <input name="group1" type="radio" ng-checked="true" ng-model="criterio"
+                         value="LIC" id="test1" class="with-gap" checked>
+                  <label for="test1" class="label-radio">Licencia</label>
+                </p>
+              </div>
+              <div class="col-50">
+                <p class="paddingleft15">
+                  <input name="group1" type="radio" ng-model="criterio"
+                         value="IDP" id="test2" class="with-gap" />
+                  <label for="test2" class="label-radio">Actividad</label>
+                </p>
+              </div>
+            </div>
+            <label class="item item-input item-select lblselect">
+              <select class="lstselect" ng-model="codAlcaldia" ng-options="alcaldia.codigo as alcaldia.descripcion for alcaldia in alcaldias" required>
+                <option value="" disabled selected hidden>Seleccione Gobierno Municipal</option>
+              </select>
+            </label>
+
+          </div>
+          <button ng-disabled="busDetForm.$invalid" class="btn-floating btn-large waves-effect waves-light btn-assertive"
+                  ng-click="buscarActividad(numActEco,criterio,codAlcaldia)" id="send">
+            <i class="ion-android-send"></i>
+          </button>
+        </form>
+      </div>
+  </ion-content>
+</ion-view>

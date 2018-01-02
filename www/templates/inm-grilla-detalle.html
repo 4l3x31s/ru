@@ -1,0 +1,36 @@
+<ion-view view-title="INMUEBLES ENCONTRADOS">
+  <ion-content scroll="true">
+        <div class="item item-divider titulo_bloque">RESULTADOS BÚSQUEDA</div>
+        <div class="item item-content">
+          <div class="row marginbottom0">
+            <div class="col-40 etiqueta">Propietario</div>
+            <div class="col-60 calm wrap">{{nombrePropietario}}</div>
+          </div>
+          <div class="row marginbottom0">
+            <div class="col-40 etiqueta">Clase</div>
+            <div class="col-60 calm wrap" ng-if="claseInmueble">{{claseInmueble}}</div>
+            <div class="col-33 text-center" ng-if="!claseInmueble">--</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="item item-divider">
+            <div class="row marginbottom0 cabecera-tabla">
+              <div class="col-33 text-center">Porcentaje</div>
+              <div class="col-33 text-center">Estado</div>
+              <div class="col-33 text-center">Fecha Inicio</div>
+            </div>
+          </div>
+          <div class="item item-text-wrap" ng-repeat="inmuebles in listaInmuebles">
+            <div class="row marginbottom0 deuda" ng-click="consultaDeuda(inmuebles,tempData)">
+              <div class="col-33 text-center wrap" ng-if="inmuebles.porcentaje">{{inmuebles.porcentaje}}</div>
+              <div class="col-33 text-center" ng-if="!inmuebles.porcentaje">--</div>
+              <div class="col-33 text-center">ACTIVO</div>
+              <div class="col-33 text-center" ng-if="inmuebles.fechaInicio">{{inmuebles.fechaInicio}}</div>
+              <div class="col-33 text-center" ng-if="!inmuebles.fechaInicio">--</div>
+              <span class="icon ion-chevron-right"></span>
+            </div>
+          </div>
+        </div>
+
+  </ion-content>
+</ion-view>

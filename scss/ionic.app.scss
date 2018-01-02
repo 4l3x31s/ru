@@ -15,9 +15,712 @@ $royal:                           #886aea !default;
 $dark:                            #444 !default;
 */
 
+
+$positive:                        #009A8F !default; //Azul claro
+$calm:                            #6F6E75 !default; //Plomo
+$balanced:                        #F8901B !default; //Amarillo oscuro
+$energized:                       #E6E7E8 !default; //PLOMO CLARO
+$assertive:                       #005462 !default; //azul Oscuro
+
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
 
+/************ESTILOS PERSONALIZADOS*******************/
+.menu{
+  background-color: $light;
+  height: 100%;
+}
+.menu .bar-header{
+  height: 120px;
+}
+.big-header{
+  top:120px !important;
+}
+.bar .bar-header{
+  height: 40px;
+}
+.bar-header {
+  height: 50px;
+  padding-top: 10px;
+}
+.has-header{
+  top:50px;
+}
+.bar .title{
+  height:50px;
+  padding-top:5px;
+}
+.bar .buttons-left span{
+  margin-top:-5px;
+}
+/*.item{
+  border-color: #fff !important;
+}*/
+.item,
+.item-complex .item-content,
+.item-radio .item-content {
+  background:none;
+}
+.item.divisor{
+  background: none;
+  font-weight: normal;
+  border:none;
+  padding: 10px;
+}
+.item.divisor a{
+  padding: 10px 0 10px 10px;
+}
+.item.divisor label{
+  color: #444;
+}
+.menu .bar-header{
+  padding:0;
+  margin: 0;
+}
+.item-select.lblselect{
+  height: 45px;
+  padding: 16px 16px 16px 0;
+}
+select.lstselect{
+  padding: 0 48px 0 16px;
+  direction: ltr;
+  left: 0;
+  color: #a9a9a9;
+}
+label.textomenu{
+  position: relative;
+  top: -15px;
+  //color: #444;
+}
+.icono.item a{
+  padding: 10px 5px 5px 30px;
+}
+.icono.item a:active{
+  text-decoration: none;
+  color: $positive;
+  background-color: #fff;
+  transition: all 0.5s ease-out;
+  will-change: opacity, transform;
+  -webkit-animation: circle .75s;
+  animation: circle .75s;
+}
+.btn-flotante{
+  position: absolute;
+  z-index: 99;
+  right: 2%;
+  bottom: 15px;
+  text-align: right;
+}
+.btn-modulo{
+  position: relative;
+  width: 100%;
+  float: left;
+  height: 0;
+}
+.btn-action-flotante{
+  float: left;
+  display: block;
+  width: 100%;
+  text-align: right;
+  padding-right: 20px;
+}
+.item .item-input .border-top0{
+  border-top: 0;
+  z-index: 999;
+}
+/**********estilos boton******************/
+.float-right{
+  position: fixed !important;
+  bottom: 10px;
+  right: 15px;
+  z-index: 999;
+  margin-top: 100%;
+}
+.btn-assertive{
+  background-color: $assertive;
+}
+/*.scroll-content {
+  position: relative;
+}*/
+button#send{
+  padding:2px 0 0 3px !important;
+}
+div.deuda{
+  padding:10px 15px 5px 5px;
+}
+.btn-floating{
+  position: fixed;
+  z-index: 999;
+  right: 10px;
+  bottom: 10px;
+}
+/*******************************************/
+.titulo{
+  color: $assertive;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+.item-floating-label{
+  border-top: 0;
+}
+input[type="text"]{
+  width: 95%;
+}
+input[type=text]:focus:not([readonly]){
+  border-bottom: 1px solid $positive;
+  margin-right: 10px;
+}
+.titulo-container{
+  margin-bottom: 0;
+}
+.banner{
+  border-bottom: 4px solid $positive;
+}
+.titulo_bloque{
+  background-color: $energized;
+  color: $assertive;
+  font-weight:bold;
+  text-transform: uppercase;
+}
+div{
+  font-size: 14px;
+}
+.marginbottom0{
+  margin-bottom: 3px;
+}
+label.textototal{
+  font-weight: bold;
+  font-size: small;
+  padding-right: 10px;
+}
+label.montototal{
+  font-weight: bold;
+  font-size: large;
+  padding-right: 15px;
+}
+label.txtsmall{
+  font-size: small;
+  padding-left: 10px;
+  /*color: black;*/
+  width: 100%;
+}
+.cabecera-tabla{
+  /*background-color: $assertive;*/
+  font-weight: bold;
+  color: $assertive;
+}
+.spinner svg {
+  width: 100% !important;
+  height: 85px !important;
+  background-position: center !important;
+  margin-top: 50%;
+}
+.loading{
+  width: 0px !important;
+  height: 0px !important;
+  border-color: rgba(0, 0, 0, 0) !important;
+  background-color: rgba(0, 0, 0, 0) !important;
+  margin-top: -200%;
+}
+.background_about {
+  border-color: rgba(0, 0, 0, 0) !important;
+  background-color: rgba(0, 0, 0, 0.4) !important;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center !important;
+  background-attachment: fixed;
+}
+.etiqueta{
+  font-weight: bold;
+  color: $calm;
+}
+.wrap{
+  white-space: pre-wrap;      /* CSS3 */
+  white-space: -moz-pre-wrap; /* Firefox */
+  white-space: -pre-wrap;     /* Opera <7 */
+  white-space: -o-pre-wrap;   /* Opera 7 */
+  word-wrap: break-word;      /* IE */
+}
+/************PAGINA INICIO*************/
+.slider-slide.caledario{
+  top:15px;
+}
+.mesCalendario{
+  background-color: $assertive;//$positive;
+  padding: 30px;
+  color: #fff;
+  height: 200px;
+}
+.textoMesCalendario{
+  font-size: 40px;
+  color: #e6e7e8;
+}
+.textoAnioCalendario{
+  font-size: large;
+  color: #e6e7e8;
+}
+.slider {
+  height: 150px;
+}
+.box {
+  padding: 1em;
+}
+.slider-pager .slider-pager-page{
+  color: #fff;
+}
+.slider-pager-page.active{
+  color: $balanced;
+}
+.popup-container{
+  background: rgba(0,0,0,0.4) !important;
+}
+.logoInicio{
+  float: left;
+  width: 90%;
+  padding: 40px 20px 20px 20px;
+  height: auto;
+  display: block;
+  margin: 0 auto
+}
+p#ini-txt{
+  margin: 15px 0 0 45px !important;
+  line-height: 15px !important;
+  padding-bottom: 10px !important;
+}
+//TODO: comentar eso para Android
+.platform-ios .logo
+{
+  width: 100% !important;
+  height: 120px !important;
+}
+.spinner svg {
+  width: 35px !important;
+  height: 35px !important;
+  stroke: $assertive;
+  -webkit-animation-name: changeColor; /* Chrome, Safari, Opera */
+  -webkit-animation-duration: 4s; /* Chrome, Safari, Opera */
+  -webkit-animation-iteration-count: infinite; /* Chrome, Safari, Opera */
+  animation-name: changeColor;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  background-color: #ffffff;
+  -webkit-box-shadow: 2px 2px 10px 0px #6f6e75;  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+  -moz-box-shadow: 2px 2px 10px 0px #6f6e75;  /* Firefox 3.5 - 3.6 */
+  box-shadow: 2px 2px 10px 0px #6f6e75;  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
+  border-radius: 50%;
+  padding:5px;
+}
+/* Chrome, Safari, Opera */
+@-webkit-keyframes changeColor {
+  0%   {stroke: $positive;}
+  50%  {stroke: $balanced;}
+  100%  {stroke: $assertive;}
+}
+/* Standard syntax */
+@keyframes changeColor {
+  0%   {stroke: $positive;}
+  50%  {stroke: $balanced;}
+  100%  {stroke: $assertive;}
+}
+/************ESTILOS ACTIVIDADES ECONOMICAS*************/
+.label-small {
+  display: block;
+  height: 34px;
+  vertical-align: middle;
+  font-size: 14px;
+  line-height: 14px;
+  padding: 10px 0 10px 15px;
+}
+form p.paddingleft15{
+  padding-left: 15px;
+  height: 34px;
+  line-height: 14px;
+}
+[type="radio"]:not(:checked)+label.label-radio, [type="radio"]:checked+label.label-radio{
+  vertical-align: middle;
+  font-size: 14px;
+}
+.item-select select{
+  max-width: 100% !important;
+  position: relative !important;
+}
+.item.txtObservacion{
+  font-size: 14px;
+}
+.grillaDeuda{
+  margin-bottom:5px;
+}
+.background_about.bgBlanco{
+  background-color: rgba(255, 255, 255, 0.9) !important
+}
+//popup
+.popup-container .popup {
+  border-radius: 10px;
+}
+.etiqueta{
+  font-weight: bold;
+}
+/**********************************/
+.espaciado{
+  height: 100px !important;
+}
+form > .item{
+  z-index: 3 !important;
+}
+.row{
+  padding: 0px;
+  margin-bottom: 10px;
+}
+.row.multilinea{
+  padding: 0px;
+  margin-bottom: 15px;
+}
+.btn-floating.btn-large {
+  width: 55.5px;
+  line-height: 65px;
+  transition: box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  transition-delay: 0.2s;
+  box-shadow:2px 4px 6px 0 rgba(0, 0, 0, 0.46);
+}
+
+.btn-floating.btn-large:active {
+  box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2);
+  transition-delay: 0s;
+}
+.button.button-assertive.menu-general{
+  margin: 5px 10px 15px 10px !important;
+}
+
+.menu-general{
+  //padding: 0px 30px !important;
+  text-align: left !important;
+  width: 94% !important;
+  min-height: 50px !important;
+  border-radius: 7px !important;
+  -webkit-box-shadow: 2px 3px 8px 1px rgba(112,112,112,1);
+  -moz-box-shadow: 2px 3px 8px 1px rgba(112,112,112,1);
+  box-shadow: 2px 3px 8px 1px rgba( 112,112,112,1);
+}
+.button.button-assertive.activated{
+  background-color: $positive;
+}
+.menu-border{
+  border-color: #fff !important;
+}
+#map {
+  width: 100%;
+  height: 100%;
+}
+/************/
+.separador-menu{
+  margin-bottom: 15px;
+}
+span.iconLeft{
+  padding-right: 10px;
+}
+.item span.iconMenu{
+  padding-right: 10px;
+  font-size: 25px;
+}
+.iconAncho{
+  text-align: center;
+  float: left;
+  width: 30px;
+  display: inline-block;
+  margin-right: 15px;
+  height: 30px;
+}
+.iconAncho img{
+  padding: 10px 0;
+}
+.menu-noborder{
+  border:none;
+}
+.menu-noborder .item{
+  border:none;
+}
+/*globo detalle mapa*/
+.map-detail{
+  -webkit-box-shadow: 6px 7px 23px -9px rgba(0,0,0,0.75);
+  -moz-box-shadow: 6px 7px 23px -9px rgba(0,0,0,0.75);
+  box-shadow: 6px 7px 23px -9px rgba(0,0,0,0.75);
+  position: absolute;
+  bottom: 20px;
+  left:0;
+  background: white;
+  border-radius: 10px;
+  padding: 15px 10px;
+  border: 1px solid #C0C0C0;
+  width: 95%;
+  z-index: 999;
+}
+.map-detail span{
+  display: block;
+}
+.map-detail span.nombreEF{
+  font-size: 13px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: $assertive;
+}
+.map-detail span.direccion{
+  font-size: 12px;
+  color: #444444;
+  font-weight: 500;
+}
+.map-detail .telefono{
+  display: inline-block;
+  font-size: 16px;
+  color: $positive;
+  font-weight: 400;
+  padding-left: 5px;
+}
+.map-detail .icon{
+  font-size: 20px;
+  color: $positive;
+}
+.map-detail .icono-punto{
+  text-align: center;
+  padding-top: 20px;
+}
+.map-detail .row{
+  margin-bottom: 0;
+}
+/*acerca de*/
+.ad-version{
+  color: $calm;
+  font-size: 13px;
+}
+.ad-links-acercade{
+  padding-top: 25px;
+}
+.ad-copy-text{
+  margin-top: 100px;
+  display: block;
+  line-height: 20px;
+  float: left;
+  width: 100%;
+  padding: 20px;
+  color: $calm;
+  font-size: 13px;
+  text-align: center;
+}
+.ad-terminos{
+  padding: 15px;
+  text-align: justify;
+  color: #6f6e75;
+}
+.ad-terminos span.ad-tituloT{
+  font-weight: bold;
+  padding-bottom: 15px;
+  display: block;
+  color: $assertive;
+}
+.ad-terminos span.ad-seccion{
+  font-weight: bold;
+  padding-bottom: 15px;
+  display: block;
+  color: $positive;
+}
+.ad-terminosH > .bar-positive .button.button-clear{
+  font-size:12px;
+}
+.ad-terminos p{
+  margin-bottom: 10px;
+}
+ul.ad-lista li{
+  list-style-type: square;
+  margin-left: 30px;
+}
+/**** MAPA****/
+#map-content{
+  padding-left: 10px;
+}
+#map-content .entidad{
+  font-size: 13px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: $assertive;
+  padding-top: 10px;
+}
+#map-body-content span{
+  font-size: 13px;
+  color: #444444;
+  font-weight: 500;
+  display: block;
+}
+#map-body-content a{
+  display: inline-block;
+  font-size: 16px;
+  color: $positive;
+  font-weight: 400;
+  padding-left: 5px;
+}
+#map-body-content .icon{
+  font-size: 20px;
+  color: $positive;
+}
+/****VENCIMIENTOS**////
+.ven-gm{
+  display: block;
+  color: $assertive;
+  font-size: 13px;
+  font-weight: 600;
+  width: 100%;
+  line-height: 15px;
+  padding-bottom: 5px;
+}
+.ven-rubro{
+  color: $positive;
+  font-weight: 600;
+  display: block;
+  font-size: 13px;
+}
+.ven-desc{
+  font-size: 12px;
+  display: block;
+  float: left;
+  width: 100%;
+  line-height: 15px;
+}
+.text-shadow-dark{
+  //text-shadow: 0px -1px 0px rgba(255, 255, 255, 0.93);
+  text-shadow: 0px 2px 0px rgba(0, 0, 0, 0.93);
+}
+.text-shadow-ligth{
+  text-shadow: 0px -1px 10px rgba(255, 255, 255, 0.93);
+}
+/**
+/** ESTILOS ULTIMA PROPUESTA ***/
+.ven-bg{
+  color: #ffffff;
+  display: block;
+  position: relative;
+}
+.ven-bg-naranja{
+  background-color: $balanced;
+  padding: 10px 0 0 0;
+}
+.ven-bg-verde{
+  background-color: $positive;
+  padding: 5px 0 0 0;
+}
+.ven-item{
+  padding: 0;
+}
+.ven-detalle{
+  padding-top: 10px !important;
+}
+.texto-desc{
+  float: left;
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding-bottom: 15px;
+}
+.icon-accion{
+  font-size: 25px;
+  position: relative;
+  z-index: 9999;
+  color: #fff;
+  /*right: 5px;
+  bottom: 5px;*/
+  padding-right: 5px;
+  padding-bottom: 3px;
+  text-align: right;
+  display: block;
+  width: 100%;
+  float: left;
+}
+.ven-bg span, .ven-bg span{
+  display: block;
+  float: left;
+  width: 100%;
+  text-align: center;
+}
+.texto{
+  font-size: 11px;
+}
+.numero{
+  font-size: 25px;
+}
+.buttons.buttons-right{
+  width: 85%;
+}
+span.secondary-buttons{
+  width: 100%;
+}
+.monto-deuda{
+  padding-right:15px;
+}
+#ven-search{
+  margin: 5px;
+}
+/**** validaciones ****/
+.val-mensaje {
+  display: block;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  color: #a94442;
+}
+p.val-mensaje {
+  margin: 0 0 0 10px;
+}
+div.margin-botom-close{
+  margin-bottom:70px !important;
+}
+p#ini-txt{
+  margin: 15px 0 0 10px;
+  line-height: 15px;
+}
+.overflow-scroll .scroll{
+  height: auto !important;
+}
+html, body {
+  height: 99%;
+  overflow:hidden;
+}
+.item-input input{
+  margin:0 15px 0 0 !important;
+  padding: 0 !important;
+}
+.card.grillaDeuda .item:last-child{
+  margin-bottom: 0 !important;
+}
+.card .item:last-child{
+  margin-bottom:70px !important;
+}
+.titulo-big{
+  font-size: 20px;
+  width: 100%;
+}
+.dataCheck{
+  color:#36911D;
+  display: block;
+}
+.iconCheck{
+  font-size: 60px;
+  @extend .dataCheck;
+}
+.txtCheck{
+  font-size: 12px;
+  @extend .dataCheck;
+}
+.btn-printPdf{
+  margin: 0 20% !important;
+  font-size: 14px;
+}
+.textoMedium{
+  font-size: 13px;
+  text-transform: uppercase;
+}
+.textoDia{
+  float: left;
+  width: 100%;
+  display: block;
+  padding: 10px 10px 5px 10px;
+}

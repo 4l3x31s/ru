@@ -1,14 +1,50 @@
 {
   "name": "RUAT",
-  "version": "0.0.1",
-  "description": "An Ionic project",
+  "version": "1.0.0",
+  "description": "RUAT, es una aplicación móvil que permite consultar la Deuda Tributaria y Datos Técnicos de los objetos tributarios que se encuentran registrados en los Gobiernos Municipales de Bolivia que utilizan el servicio del Registro Único para la Administración Tributaria Municipal (RUAT); también proporciona información referente a las fechas de vencimiento para el pago de Impuestos y Patentes Municipales de los diferentes rubros (Vehículos, Inmuebles, Actividades Económicas) y las localizaciones de los puntos de cobro próximas a la ubicación actual del usuario. Adicionalmente, en lo relacionado al rubro de Vehículos permite consultar los datos proporcionados por la Policía Boliviana Nacional como datos de Gravámenes, Robo de Vehículos, Inspección Técnica Vehicular e Infracciones.",
   "devDependencies": {
     "gulp": "^3.5.6",
     "gulp-clean-css": "^3.7.0",
     "gulp-rename": "^1.2.0",
-    "gulp-sass": "^3.1.0"
+    "gulp-sass": "^3.1.0",
+    "gulp-tsc": "^1.3.2"
   },
   "dependencies": {
-    "@ionic/pro": "1.0.16"
+    "@ionic/pro": "1.0.16",
+    "cordova-plugin-app-version": "^0.1.9",
+    "cordova-plugin-device": "^1.1.4",
+    "cordova-plugin-file-opener2": "^2.0.19",
+    "cordova-plugin-geolocation": "^4.0.1",
+    "cordova-plugin-inappbrowser": "^2.0.1",
+    "cordova-plugin-ionic-webview": "^1.1.16",
+    "cordova-plugin-network-information": "^2.0.1",
+    "cordova-plugin-splashscreen": "^4.0.3",
+    "cordova-plugin-statusbar": "^2.4.1",
+    "cordova-plugin-whitelist": "^1.3.1",
+    "cordova-sqlite-storage": "^2.1.5",
+    "cordova.plugins.diagnostic": "^3.8.1",
+    "ionic-plugin-keyboard": "^2.2.1",
+    "phonegap-plugin-barcodescanner": "^7.0.0"
+  },
+  "cordova": {
+    "plugins": {
+      "cordova-plugin-file-opener2": {},
+      "cordova.plugins.diagnostic": {},
+      "cordova-plugin-app-version": {},
+      "cordova-plugin-geolocation": {},
+      "cordova-plugin-inappbrowser": {},
+      "cordova-plugin-network-information": {},
+      "cordova-plugin-statusbar": {},
+      "cordova-sqlite-storage": {},
+      "phonegap-plugin-barcodescanner": {},
+      "ionic-plugin-keyboard": {},
+      "cordova-plugin-whitelist": {},
+      "cordova-plugin-device": {},
+      "cordova-plugin-splashscreen": {},
+      "cordova-plugin-ionic-webview": {}
+    },
+    "platforms": [
+      "ios"
+    ]
   }
 }

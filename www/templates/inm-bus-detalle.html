@@ -1,0 +1,42 @@
+<ion-view view-title="Inmuebles">
+  <ion-content scroll="false">
+    <div class="contenedor scroll-content ionic-scroll overflow-scroll">
+        <form name="busGralFormInm" novalidate>
+          <div class="item item-image banner">
+            <img class="full-image" src="img/img_inmueble_datos.png">
+          </div>
+          <div class="btn-modulo">
+            <div class="btn-flotante">
+              <img src="img/ico_dt_inm.png" width="90">
+            </div>
+          </div>
+          <br/>
+          <div class="row titulo-container">
+            <h4 class="col titulo">Consulta Datos Técnicos</h4>
+          </div>
+          <br class="list">
+          <label class="item item-input border-top0 item-floating-label">
+            <span class="input-label">Número Inmueble</span>
+            <input ng-pattern="validarNumeroInm" type="number" ng-maxlength="13" ng-minlength="1" maxlength="13" ng-value="identificadorInm" placeholder="Número Inmueble. Ej. 144584"
+                   ng-model="numInmueble" required>
+          </label>
+          <label class="item item-input border-top0 item-floating-label">
+            <span class="input-label">Número de Identificación</span>
+            <input ng-pattern="validarCI" type="text" ng-maxlength="13" ng-minlength="1" maxlength="13" placeholder="Número de Identificación. Ej. 12345678"
+                   ng-model="docIdentidad" required>
+          </label>
+          <label class="item item-input item-select lblselect">
+            <select class="lstselect" ng-model="codAlcaldia"
+                    ng-options="alcaldia.codigo as alcaldia.descripcion for alcaldia in alcaldias" required>
+              <option value="" disabled selected hidden>Seleccione Gobierno Municipal</option>
+            </select>
+          </label>
+          <button ng-disabled="busGralFormInm.$invalid"
+                  class="btn-floating btn-large waves-effect waves-light btn-assertive"
+                  id="send" ng-click="buscarInmueble(numInmueble,codAlcaldia,docIdentidad)">
+            <i class="ion-android-send"></i>
+          </button>
+        </form>
+    </div>
+  </ion-content>
+</ion-view>

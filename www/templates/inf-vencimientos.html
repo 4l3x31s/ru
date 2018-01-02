@@ -1,0 +1,71 @@
+<ion-view view-title="Vencimientos">
+  <!--<ion-nav-buttons side="secondary" class="bar bar-header">
+    <label class="item-input-wrapper">
+      <i class="icon ion-ios-search placeholder-icon"></i>
+      <input type="search" ng-model="query[queryBy]" placeholder="Buscar">
+    </label>
+  </ion-nav-buttons>-->
+  <ion-content scroll="true">
+
+      <div class="list list-inset" id="ven-search">
+        <label class="item item-input">
+          <i class="icon ion-search placeholder-icon"></i>
+          <input type="search" ng-model="query[queryBy]" placeholder="Buscar Gobierno Municipal">
+        </label>
+      </div>
+      <!--<label class="item-input-wrapper">
+        <i class="icon ion-ios-search placeholder-icon"></i>
+        <input  type="search" ng-model="query[queryBy]" placeholder="Buscar Gobierno Municipal">
+      </label>-->
+      <ul class="list vencimientos">
+        <li class="item ven-item" ng-repeat="vencimiento in listaVencimientos | filter:query">
+          <div ng-if="vencimiento.rubro==1 || vencimiento.rubro==2 || vencimiento.rubro==4" >
+            <div class="row">
+              <div class="ven-bg ven-bg-naranja">
+                <div ng-if="(diasRestantes(vencimiento.fechaFin,fechaActual)) >= 1">
+                  <span class="texto">Faltan</span>
+                  <span class="numero">{{diasRestantes(vencimiento.fechaFin,fechaActual)}}</span>
+                  <span class="texto">día(s)</span>
+                  <div class="icon-accion">
+                    <i class="icon ion-android-calendar"></i>
+                  </div>
+                </div>
+
+                <div ng-if="(diasRestantes(vencimiento.fechaFin,fechaActual)) == 0">
+                  <div class="textoDia">
+                    <span class="textoMedium">Último</span>
+                    <span class="textoMedium">Día</span>
+                  </div>
+                  <div class="icon-accion">
+                    <i class="icon ion-android-calendar"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="col-20 ven-bg ven-bg-verde">
+                <div class="icon-accion">
+                  <img src="img/ico_veh.png" width="25" ng-if="vencimiento.rubro==1"/>
+                  <img src="img/ico_inm.png" width="20" ng-if="vencimiento.rubro==2"/>
+                  <img src="img/ico_acteco.png" width="25" ng-if="vencimiento.rubro==4"/>
+                </div>
+                <span class="numero">{{vencimiento.porcentaje}}%</span>
+                <span class="texto">Descuento</span>
+                <div class="icon-accion">
+                  <i class="icon ion-social-usd"></i>
+                </div>
+              </div>
+              <div class="col col-60 ven-detalle">
+                <span class="ven-gm wrap">{{vencimiento.gobiernoMunicipal}} - ({{vencimiento.departamento}})</span>
+                <span class="ven-rubro" ng-if="vencimiento.rubro==1">Vehículos</span>
+                <span class="ven-rubro" ng-if="vencimiento.rubro==2">Inmuebles</span>
+                <span class="ven-rubro" ng-if="vencimiento.rubro==4">Actividades Económicas</span>
+                <!-- <span class="ven-desc wrap">Puede pagar sus impuestos con este beneficio hasta el <b>{{vencimiento.fechaFin}}</b></span> -->
+                <span ng-if="!vencimiento.observacionAdicional" class="ven-desc wrap">Puede pagar sus impuestos con este beneficio hasta el <b>{{vencimiento.fechaFin}}</b></span>
+                <span ng-if="vencimiento.observacionAdicional" class="ven-desc wrap">{{vencimiento.observacionAdicional}}</b></span>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+
+  </ion-content>
+</ion-view>

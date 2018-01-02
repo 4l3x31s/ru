@@ -1,0 +1,189 @@
+<ion-view view-title="DATOS TÉCNICOS">
+  <ion-content scroll="true">
+
+        <div class="item item-divider titulo_bloque">DATOS IDENTIFICACIÓN VEHÍCULO</div>
+        <div class="item item-content">
+          <div class="row marginbottom0">
+            <div class="col-67 etiqueta">Placa PTA</div>
+            <div class="col-32 calm">{{bnDatosVehiculo.pta| uppercase}}</div>
+          </div>
+          <div class="row marginbottom0">
+            <div class="col-67 etiqueta">Copia Válida Placa PTA</div>
+            <div class="col-32 calm" ng-if="bnDatosVehiculo.nroCopiaPta">{{bnDatosVehiculo.nroCopiaPta}}</div>
+            <div class="col-33 text-center wrap" ng-if="!bnDatosVehiculo.nroCopiaPta">--</div>
+          </div>
+          <div class="row marginbottom0">
+            <div class="col-67 etiqueta">Póliza</div>
+            <div class="col-32 calm" ng-if="bnDatosVehiculo.poliza">{{bnDatosVehiculo.poliza}}</div>
+            <div class="col-33 text-center wrap" ng-if="!bnDatosVehiculo.poliza">--</div>
+          </div>
+          <div class="row marginbottom0">
+            <div class="col-67 etiqueta">Placa Anterior</div>
+            <div class="col-32 calm" ng-if="bnDatosVehiculo.placa">{{bnDatosVehiculo.placa}}</div>
+            <div class="col-33 text-left wrap" ng-if="!bnDatosVehiculo.placa">--</div>
+          </div>
+        </div>
+
+        <div class="item item-divider titulo_bloque">DATOS TÉCNICOS</div>
+        <div class="item item-content">
+          <div class="row marginbottom0">
+            <div class="col-50 etiqueta">Clase</div>
+            <div class="col-50 calm" ng-if="datosTecnicosDetalle.clase">{{datosTecnicosDetalle.clase}}</div>
+            <div class="col-33 text-center wrap" ng-if="!datosTecnicosDetalle.clase">--</div>
+          </div>
+          <div class="row marginbottom0">
+            <div class="col-50 etiqueta">Marca</div>
+            <div class="col-50 calm" ng-if="datosTecnicosDetalle.marca">{{datosTecnicosDetalle.marca}}</div>
+            <div class="col-33 text-center wrap" ng-if="!datosTecnicosDetalle.marca">--</div>
+          </div>
+          <div class="row marginbottom0">
+            <div class="col-50 etiqueta">Tipo</div>
+            <div class="col-50 calm" ng-if="datosTecnicosDetalle.tipo">{{datosTecnicosDetalle.tipo}}</div>
+            <div class="col-33 text-center wrap" ng-if="!datosTecnicosDetalle.tipo">--</div>
+          </div>
+          <div class="row marginbottom0">
+            <div class="col-50 etiqueta">Modelo</div>
+            <div class="col-50 calm" ng-if="datosTecnicosDetalle.modelo">{{datosTecnicosDetalle.modelo}}</div>
+            <div class="col-33 text-center wrap" ng-if="!datosTecnicosDetalle.modelo">--</div>
+          </div>
+          <div class="row marginbottom0">
+            <div class="col-50 etiqueta">Procedencia</div>
+            <div class="col-50 calm wrap" ng-if="datosTecnicosDetalle.procedencia">{{datosTecnicosDetalle.procedencia}}</div>
+            <div class="col-33 text-center wrap" ng-if="!datosTecnicosDetalle.procedencia">--</div>
+          </div>
+          <div class="row marginbottom0">
+            <div class="col-50 etiqueta">Nro. Motor</div>
+            <div class="col-50 calm" ng-if="datosTecnicosDetalle.nroMotor">{{datosTecnicosDetalle.nroMotor}}</div>
+            <div class="col-33 text-center wrap" ng-if="!datosTecnicosDetalle.nroMotor">--</div>
+          </div>
+          <div class="row marginbottom0">
+            <div class="col-50 etiqueta">Nro. Chasis</div>
+            <div class="col-50 calm wrap" ng-if="datosTecnicosDetalle.nroChasis">{{datosTecnicosDetalle.nroChasis}}</div>
+            <div class="col-33 text-center wrap" ng-if="!datosTecnicosDetalle.nroChasis">--</div>
+          </div>
+          <div class="row marginbottom0">
+            <div class="col-50 etiqueta">Cilindrada</div>
+            <div class="col-50 calm" ng-if="datosTecnicosDetalle.cilindrada">{{datosTecnicosDetalle.cilindrada}}</div>
+            <div class="col-33 text-center wrap" ng-if="!datosTecnicosDetalle.cilindrada">--</div>
+          </div>
+          <div class="row marginbottom0">
+            <div class="col-50 etiqueta">Tracción</div>
+            <div class="col-50 calm" ng-if="datosTecnicosDetalle.traccion">{{datosTecnicosDetalle.traccion}}</div>
+            <div class="col-33 text-center wrap" ng-if="!datosTecnicosDetalle.traccion">--</div>
+          </div>
+          <div class="row marginbottom0">
+            <div class="col-50 etiqueta">Nro. Ruedas</div>
+            <div class="col-50 calm" ng-if="datosTecnicosDetalle.nroRuedas">{{datosTecnicosDetalle.nroRuedas}}</div>
+            <div class="col-33 text-center wrap" ng-if="!datosTecnicosDetalle.nroRuedas">--</div>
+          </div>
+          <div class="row marginbottom0">
+            <div class="col-50 etiqueta">Nro. Puertas</div>
+            <div class="col-50 calm" ng-if="datosTecnicosDetalle.nroPuertas">{{datosTecnicosDetalle.nroPuertas}}</div>
+            <div class="col-33 text-center wrap" ng-if="!datosTecnicosDetalle.nroPuertas">--</div>
+          </div>
+          <div class="row marginbottom0">
+            <div class="col-50 etiqueta">Cap. Carga (Tn.)</div>
+            <div class="col-50 calm" ng-if="datosTecnicosDetalle.capCarga">{{datosTecnicosDetalle.capCarga}}</div>
+            <div class="col-33 text-left wrap" ng-if="!datosTecnicosDetalle.capCarga">--</div>
+          </div>
+          <div class="row marginbottom0">
+            <div class="col-50 etiqueta">Color</div>
+            <div class="col-50 calm" ng-if="datosTecnicosDetalle.color">{{datosTecnicosDetalle.color}}</div>
+            <div class="col-33 text-center wrap" ng-if="!datosTecnicosDetalle.color">--</div>
+          </div>
+          <div class="row marginbottom0">
+            <div class="col-50 etiqueta">Combustible</div>
+            <div class="col-50 calm" ng-if="datosTecnicosDetalle.combustible">{{datosTecnicosDetalle.combustible}}</div>
+            <div class="col-33 text-center wrap" ng-if="!datosTecnicosDetalle.combustible">--</div>
+          </div>
+          <div class="row marginbottom0">
+            <div class="col-50 etiqueta">Tipo Motor</div>
+            <div class="col-50 calm" ng-if="datosTecnicosDetalle.tipoMotor">{{datosTecnicosDetalle.tipoMotor}}</div>
+            <div class="col-33 text-center wrap" ng-if="!datosTecnicosDetalle.tipoMotor">--</div>
+          </div>
+        </div>
+        <div class="item item-divider titulo_bloque">DATOS ADICIONALES</div>
+        <div class="item item-content">
+          <div class="row marginbottom0">
+            <div class="col-50 etiqueta">CRPVA</div>
+            <div class="col-50 calm" ng-if="datosEntrada.crpva">{{datosEntrada.crpva}}</div>
+            <div class="col-33 text-center wrap" ng-if="!datosEntrada.crpva">--</div>
+          </div>
+          <div class="row marginbottom0">
+            <div class="col-50 etiqueta">Tipo Vehículo</div>
+            <div class="col-50 calm" ng-if="beanBusquedaVehiculo.tipoVehiculo">{{beanBusquedaVehiculo.tipoVehiculo}}</div>
+            <div class="col-33 text-center wrap" ng-if="!beanBusquedaVehiculo.tipoVehiculo">--</div>
+          </div>
+          <div class="row marginbottom0">
+            <div class="col-50 etiqueta">Servicio</div>
+            <div class="col-50 calm" ng-if="beanDatosServicio.descripcion">{{beanDatosServicio.descripcion}}</div>
+            <div class="col-33 text-center wrap" ng-if="!beanDatosServicio.descripcion">--</div>
+          </div>
+          <div class="row marginbottom0">
+            <div class="col-50 etiqueta">Radicatoria</div>
+            <div class="col-50 calm wrap" ng-if="radicatoria">{{radicatoria}}</div>
+            <div class="col-33 text-left wrap" ng-if="!radicatoria">--</div>
+          </div>
+        </div>
+        <div ng-if="beanContribuyenteJuridico">
+          <div class="item item-divider titulo_bloque">DATOS REPRESENTANTE LEGAL</div>
+          <div class="item item-content">
+            <div class="row marginbottom0 multilinea">
+              <div class="col-50 etiqueta wrap">Nombre Representante Legal</div>
+              <div class="col-50 calm wrap"  ng-if="tipoCotribuyente=='JU' && beanContribuyenteJuridico.nombreRepLegal">{{beanContribuyenteJuridico.nombreRepLegal}}</div>
+              <div class="col-50 calm wrap"  ng-if="tipoCotribuyente=='JU' && !beanContribuyenteJuridico.nombreRepLegal">--</div>
+            </div>
+            <div class="row marginbottom0">
+              <div class="col-50 etiqueta">Número Poder</div>
+              <div class="col-50 calm wrap" ng-if="tipoCotribuyente=='JU' && beanContribuyenteJuridico.nroPoder">{{beanContribuyenteJuridico.nroPoder}}</div>
+              <div class="col-50 calm wrap" ng-if="tipoCotribuyente=='JU' && !beanContribuyenteJuridico.nroPoder">--</div>
+            </div>
+            <div class="row marginbottom0 multilinea">
+              <div class="col-50 etiqueta wrap">Documento Representante Legal</div>
+              <div class="col-50 calm" ng-if="tipoCotribuyente=='JU' && beanContribuyenteJuridico.docIdentidadrl">{{beanContribuyenteJuridico.docIdentidadrl}}</div>
+              <div class="col-50 calm" ng-if="tipoCotribuyente=='JU' && !beanContribuyenteJuridico.docIdentidadrl">--</div>
+            </div>
+            <div class="row marginbottom0">
+              <div class="col-50 etiqueta">Fecha Poder</div>
+              <div class="col-50 calm" ng-if="tipoCotribuyente=='JU' && beanContribuyenteJuridico.fechaPoder">{{beanContribuyenteJuridico.fechaPoder}}</div>
+              <div class="col-50 calm" ng-if="tipoCotribuyente=='JU' && !beanContribuyenteJuridico.fechaPoder">--</div>
+            </div>
+          </div>
+        </div>
+        <div class="item item-divider titulo_bloque">DATOS PROPIETARIO</div>
+        <div class="item item-content">
+          <div class="row marginbottom0">
+            <div class="col-50 etiqueta">Nombre Completo</div>
+            <div class="col-50 calm wrap"  ng-if="tipoCotribuyente=='JU'">{{beanContribuyenteJuridico.nombreRsocial}}</div>
+            <div class="col-50 calm wrap"  ng-if="tipoCotribuyente=='NA'">{{beanContribuyenteNatural.nombres}} {{beanContribuyenteNatural.primerApellido}}</div>
+          </div>
+          <div class="row marginbottom0">
+            <div class="col-50 etiqueta">Número Documento</div>
+            <div class="col-50 calm" ng-if="tipoCotribuyente=='JU'">{{beanContribuyenteJuridico.tipoDocAbrev}} {{beanContribuyenteJuridico.docIdentidad}}</div>
+            <div class="col-50 calm" ng-if="tipoCotribuyente=='NA'">{{beanContribuyenteNatural.tipoDocumentoAbreviado}} {{beanContribuyenteNatural.numeroDocumento}} {{beanContribuyenteNatural.expedidoAbreviado}}</div>
+          </div>
+          <div class="row marginbottom0">
+            <div class="col-50 etiqueta">PMC</div>
+            <div class="col-50 calm" ng-if="tipoCotribuyente=='JU'">{{beanContribuyenteJuridico.pmc}}</div>
+            <div class="col-50 calm" ng-if="tipoCotribuyente=='NA'">{{beanContribuyenteNatural.pmc}}</div>
+          </div>
+        </div>
+
+        <div ng-if="direcciones">
+          <div class="item item-divider titulo_bloque">OBSERVACIONES</div>
+          <div class="card">
+            <div ng-repeat="direccion in direcciones" >
+              <div class="item item-body txtObservacion" ng-bind-html="direccion"></div>
+            </div>
+          </div>
+        </div>
+
+    <!-- TODO: Comentado para modulos posteriores
+    <div class=" float-right">
+      <button class="btn-floating btn-large waves-effect waves-light btn-assertive" ng-click="show()">
+        <i class="ion-plus"></i>
+      </button>
+    </div>
+    -->
+  </ion-content>
+</ion-view>

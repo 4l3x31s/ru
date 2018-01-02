@@ -1,0 +1,381 @@
+<ion-view view-title="DATOS DEUDAS">
+  <ion-content scroll="true">
+        <div class="item item-divider titulo_bloque wrap">DATOS IDENTIFICACIÓN TASA U OTRO INGRESO</div>
+        <div ng-if="tasaElegida=='TO'">
+          <div class="item item-content">
+            <div class="row marginbottom0">
+              <div class="col-50 etiqueta">Número Tasa</div>
+              <div class="col-50 calm wrap">{{respuesta.beanDatosOtrosIngresos.bnDatosIdentificacionTasasOI.numero}}</div>
+            </div>
+            <div class="row marginbottom0">
+              <div class="col-50 etiqueta">Tipo Tasa</div>
+              <div class="col-50 calm wrap">{{respuesta.beanDatosOtrosIngresos.bnDatosIdentificacionTasasOI.tipoTasa}}</div>
+            </div>
+            <div class="row marginbottom0">
+              <div class="col-50 etiqueta">Gobierno Municipal</div>
+              <div class="col-50 calm wrap">{{respuesta.beanDatosOtrosIngresos.bnDatosIdentificacionTasasOI.alcaldia}}</div>
+            </div>
+          </div>
+        </div>
+        <div ng-if="tasaElegida!='TO'">
+            <div class="item item-content">
+              <div class="row marginbottom0">
+                <div class="col-50 etiqueta">Número Tasa</div>
+                <div class="col-50 calm wrap">{{respuesta.bnDatosIdentificacion.numero}}</div>
+              </div>
+              <div class="row marginbottom0">
+                <div class="col-50 etiqueta">Gobierno Municipal</div>
+                <div class="col-50 calm wrap">{{respuesta.bnDatosIdentificacion.descAlcaldia}}</div>
+              </div>
+            </div>
+        </div>
+
+        <!--TODO: Tasas y Otros Ingresos-->
+        <div ng-if="tasaElegida=='TO'">
+          <div ng-if="respuesta.beanDatosOtrosIngresos.bnDatosGeneralesTasasOI.observacion">
+            <div class="item item-divider titulo_bloque">DATOS GENERALES</div>
+            <div class="item item-content">
+              <div class="row" style="margin-bottom: 0;">
+                <div class="col-40 etiqueta">Observación</div>
+                <div class="col-60 calm wrap ">{{respuesta.beanDatosOtrosIngresos.bnDatosGeneralesTasasOI.observacion}}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="item item-divider titulo_bloque">DATOS DEUDAS</div>
+          <div ng-if="respuesta.beanDatosOtrosIngresos.lstProformaDeudas.length>0 && subTipoTasa != 'VALORADO'">
+            <div class="card text-right">
+              <label class="assertive textototal">Total Deuda (Bs.)</label>
+              <label class="calm montototal">{{respuesta.beanDatosOtrosIngresos.montoAcumulado}}</label>
+            </div>
+            <div class="card grillaDeuda">
+              <div class="item item-divider deuda">
+                <div class="row cabecera-tabla" style="margin-bottom: 0;">
+                  <div class="col-33 text-center">Código</div>
+                  <div class="col-33 text-center">Descripción</div>
+                  <div class="col-33 text-center">Monto (Bs.)</div>
+                </div>
+              </div>
+              <div class="item item-text-wrap deuda" ng-repeat="proforma in respuesta.beanDatosOtrosIngresos.lstProformaDeudas">
+                <div class="row" style="margin-bottom: 0;">
+                  <div class="col-33 text-center wrap" ng-if="proforma.codigo">{{proforma.codigo}}</div>
+                  <div class="col-33 text-center wrap" ng-if="proforma.codigo==undefined">--</div>
+                  <div class="col-33 text-center">{{proforma.concepto}}</div>
+                  <div class="col-33 text-right monto-deuda" ng-if="proforma.montoBs">{{proforma.montoBs}}</div>
+                  <div class="col-33 text-right monto-deuda" ng-if="!proforma.montoBs">--</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- TO VALORADOS -->
+          <div ng-if="respuesta.beanDatosOtrosIngresos.lstProformaDeudas.length>0 && subTipoTasa == 'VALORADO'">
+            <div class="card text-right">
+              <label class="assertive textototal">Total Deuda (Bs.)</label>
+              <label class="calm montototal">{{respuesta.beanDatosOtrosIngresos.montoAcumulado}}</label>
+            </div>
+            <div class="card grillaDeuda">
+              <div class="item item-divider deuda">
+                <div class="row cabecera-tabla" style="margin-bottom: 0;">
+                  <div class="col-33 text-center">Código</div>
+                  <div class="col-33 text-center">Ítem</div>
+                  <div class="col-25 text-center">Serie</div>
+                  <div class="col-10 text-center"></div>
+                </div>
+              </div>
+              <div class="item item-text-wrap deuda" ng-repeat="proforma in respuesta.beanDatosOtrosIngresos.lstProformaDeudas">
+                <div class="row" style="margin-bottom: 0;" ng-click="consultaDeudaTO(proforma, respuesta.beanDatosOtrosIngresos.bnDatosIdentificacionTasasOI)">
+                  <div class="col-33 text-center wrap" ng-if="proforma.codigo">{{proforma.codigo}}</div>
+                  <div class="col-33 text-center wrap" ng-if="proforma.codigo==undefined">--</div>
+                  <div class="col-33 text-center">{{proforma.concepto}}</div>
+                  <div class="col-25 text-center" ng-if="proforma.serie">{{proforma.serie}}</div>
+                  <div class="col-25 text-center wrap" ng-if="!proforma.serie">--</div>
+                  <div class="col-10 text-right"><span class="icon ion-chevron-right"></span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <div ng-if="respuesta.beanDatosOtrosIngresos.mensajeLiquidacionTasa != ''">
+            <div class="item item-content">
+              <div class="row marginbottom0">
+                <div class="col-90 calm margin-botom-close">{{respuesta.beanDatosOtrosIngresos.mensajeLiquidacionTasa}}</div>
+              </div>
+            </div>
+          </div>
+          <div ng-if="respuesta.observaciones.length>0">
+            <div class="item item-divider titulo_bloque">Observaciones</div>
+            <div class="item item-text-wrap" ng-repeat="observacion in respuesta.observaciones">
+              <div class="col-90 calm margin-botom-close">{{observacion}}</div>
+            </div>
+          </div>
+        </div>
+        <!--TODO: Mercado-->
+        <div ng-if="tasaElegida=='ME'">
+          <div class="item item-divider titulo_bloque">DATOS GENERALES</div>
+          <div class="item item-content">
+            <div class="row marginbottom0">
+              <div class="col-40 etiqueta">Mercado</div>
+              <div class="col-60 calm wrap" ng-if="respuesta.beanDatosMercado.bnDatosGralesPuesto.descMercado">{{respuesta.beanDatosMercado.bnDatosGralesPuesto.descMercado}}</div>
+              <div class="col-33 text-center wrap" ng-if="!respuesta.beanDatosMercado.bnDatosGralesPuesto.descMercado">--</div>
+            </div>
+            <div class="row marginbottom0">
+              <div class="col-40 etiqueta">Dirección</div>
+              <div class="col-60 calm wrap" ng-if="respuesta.beanDatosMercado.bnDatosGralesPuesto.direccion">{{respuesta.beanDatosMercado.bnDatosGralesPuesto.direccion}}</div>
+              <div class="col-33 text-center wrap" ng-if="!respuesta.beanDatosMercado.bnDatosGralesPuesto.direccion">--</div>
+            </div>
+            <div class="row marginbottom0">
+              <div class="col-40 etiqueta">Tipo</div>
+              <div class="col-60 calm wrap" ng-if="respuesta.beanDatosMercado.bnDatosGralesPuesto.tipo">{{respuesta.beanDatosMercado.bnDatosGralesPuesto.tipo}}</div>
+              <div class="col-33 text-center wrap" ng-if="!respuesta.beanDatosMercado.bnDatosGralesPuesto.tipo">--</div>
+            </div>
+            <div class="row marginbottom0">
+              <div class="col-40 etiqueta">Modalidad Pago</div>
+              <div class="col-60 calm wrap" ng-if="respuesta.beanDatosMercado.bnDatosGralesPuesto.modalidadPago">{{respuesta.beanDatosMercado.bnDatosGralesPuesto.modalidadPago}}</div>
+              <div class="col-33 text-center wrap" ng-if="!respuesta.beanDatosMercado.bnDatosGralesPuesto.modalidadPago">--</div>
+            </div>
+            <div class="row marginbottom0">
+              <div class="col-40 etiqueta">Ubicación</div>
+              <div class="col-60 calm wrap" ng-if="respuesta.beanDatosMercado.bnDatosGralesPuesto.rubro">{{respuesta.beanDatosMercado.bnDatosGralesPuesto.rubro}}</div>
+              <div class="col-33 text-center wrap" ng-if="!respuesta.beanDatosMercado.bnDatosGralesPuesto.rubro">--</div>
+            </div>
+          </div>
+
+
+          <div ng-if="respuesta.beanDatosMercado.lstBeanProformaDeudases.length>0">
+            <div class="item item-divider titulo_bloque">DATOS DEUDAS MULTA</div>
+            <div class="card text-right">
+              <label class="assertive textototal">Total Deuda (Bs.)</label>
+              <label class="calm montototal">{{respuesta.beanDatosMercado.montoAcumuladoMulta}}</label>
+            </div>
+            <div class="card grillaDeuda">
+              <div class="item item-divider deuda">
+                <div class="row cabecera-tabla" style="margin-bottom: 0;">
+                  <div class="col-33 text-center">Periodo</div>
+                  <div class="col-33 text-center">Descripción</div>
+                  <div class="col-33 text-center">Monto (Bs.)</div>
+                </div>
+              </div>
+              <div class="item item-text-wrap deuda" ng-repeat="proforma in respuesta.beanDatosMercado.lstBeanProformaDeudases">
+                <div class="row" style="margin-bottom: 0;">
+                  <div class="col-33 text-center wrap" ng-if="proforma.periodo">{{proforma.periodo}}</div>
+                  <div class="col-33 text-center wrap" ng-if="!proforma.periodo">--</div>
+                  <div class="col-33 text-center">{{proforma.concepto}}</div>
+                  <div class="col-33 text-right monto-deuda" ng-if="proforma.montoBs">{{proforma.montoBs}}</div>
+                  <div class="col-33 text-right monto-deuda" ng-if="!proforma.montoBs">--</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="item item-divider titulo_bloque">DATOS DEUDAS</div>
+          <div ng-if="respuesta.beanDatosMercado.lstBeanDatosDeudas.length>0">
+            <div class="card text-right">
+              <label class="assertive textototal">Total Deuda (Bs.)</label>
+              <label class="calm montototal" ng-if="respuesta.beanDatosMercado.montoAcumulado!==0">{{respuesta.beanDatosMercado.montoAcumulado}}</label>
+              <label class="calm montototal" ng-if="respuesta.beanDatosMercado.montoAcumulado===0">--}</label>
+            </div>
+            <div class="card grillaDeuda">
+              <div class="item item-divider deuda">
+                <div class="row cabecera-tabla" style="margin-bottom: 0;">
+                  <div class="col-33 text-center">Periodo</div>
+                  <div class="col-33 text-center">Descripción</div>
+                  <div class="col-33 text-center">Monto (Bs.)</div>
+                </div>
+              </div>
+              <div class="item item-text-wrap deuda" ng-repeat="proforma in respuesta.beanDatosMercado.lstBeanDatosDeudas">
+                <div class="row" style="margin-bottom: 0;">
+                  <div class="col-33 text-center wrap" ng-if="proforma.descPeriodo">{{proforma.descPeriodo}}</div>
+                  <div class="col-33 text-center wrap" ng-if="!proforma.descPeriodo">--</div>
+                  <div class="col-33 text-center">{{proforma.concepto}}</div>
+                  <div class="col-33 text-right monto-deuda" ng-if="proforma.montoBs">{{proforma.montoBs}}</div>
+                  <div class="col-33 text-right monto-deuda" ng-if="!proforma.montoBs">--</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div ng-if="respuesta.beanDatosMercado.mensajeDeuda != ''">
+            <div class="item item-content">
+              <div class="row marginbottom0">
+                <div class="col-90 calm wrap margin-botom-close">{{respuesta.beanDatosMercado.mensajeDeuda}}</div>
+              </div>
+            </div>
+          </div>
+          <!--<div ng-if="respuesta.beanDatosMercado.lstBeanDatosDeudas.length==0">
+            <div class="item item-content">
+              <div class="row marginbottom0">
+                <div class="col-90 calm">El puesto de mercado no tiene deudas pendientes.</div>
+              </div>
+            </div>
+          </div>-->
+          <div ng-if="respuesta.observaciones.length>0">
+            <div class="item item-divider titulo_bloque">Observaciones</div>
+            <div class="item item-text-wrap" ng-repeat="observacion in respuesta.observaciones">
+              <div class="col-90 calm margin-botom-close">{{observacion}}</div>
+            </div>
+          </div>
+        </div>
+        <!--TODO: Arbitrio-->
+        <div ng-if="tasaElegida=='AR'">
+          <div class="item item-divider titulo_bloque">DATOS GENERALES</div>
+          <div class="item item-content">
+            <div class="row marginbottom0">
+              <div class="col-40 etiqueta">Lugar</div>
+              <div class="col-60 calm wrap" ng-if="respuesta.beanDatosArbitrio.bnDatosGralesPuesto.descMercado">{{respuesta.beanDatosArbitrio.bnDatosGralesPuesto.descMercado}}</div>
+              <div class="col-33 text-center wrap" ng-if="!respuesta.beanDatosArbitrio.bnDatosGralesPuesto.descMercado">--</div>
+            </div>
+            <div class="row marginbottom0">
+              <div class="col-40 etiqueta">Dirección</div>
+              <div class="col-60 calm wrap" ng-if="respuesta.beanDatosArbitrio.bnDatosGralesPuesto.direccion">{{respuesta.beanDatosArbitrio.bnDatosGralesPuesto.direccion}}</div>
+              <div class="col-33 text-center wrap" ng-if="!respuesta.beanDatosArbitrio.bnDatosGralesPuesto.direccion">--</div>
+            </div>
+            <div class="row marginbottom0">
+              <div class="col-40 etiqueta">Arbitrio</div>
+              <div class="col-60 calm wrap" ng-if="respuesta.beanDatosArbitrio.bnDatosGralesPuesto.rubro">{{respuesta.beanDatosArbitrio.bnDatosGralesPuesto.rubro}}</div>
+              <div class="col-33 text-center wrap" ng-if="!respuesta.beanDatosArbitrio.bnDatosGralesPuesto.rubro">--</div>
+            </div>
+          </div>
+          <div class="item item-divider titulo_bloque">DATOS DEUDAS</div>
+          <div ng-if="respuesta.beanDatosArbitrio.lstBeanDatosDeuda.length>0">
+            <div class="card text-right">
+              <label class="assertive textototal">Total Deuda (Bs.)</label>
+              <label class="calm montototal">{{respuesta.beanDatosArbitrio.montoAcumulado}}</label>
+              <div class="col-33 text-center wrap" ng-if="!respuesta.beanDatosArbitrio.montoAcumulado">--</div>
+            </div>
+            <div class="card grillaDeuda">
+              <div class="item item-divider deuda">
+                <div class="row cabecera-tabla" style="margin-bottom: 0;">
+                  <div class="col-33 text-center">Periodo</div>
+                  <div class="col-33 text-center">Descripción</div>
+                  <div class="col-33 text-center">Monto (Bs.)</div>
+                </div>
+              </div>
+              <div class="item item-text-wrap deuda" ng-repeat="proforma in respuesta.beanDatosArbitrio.lstBeanDatosDeuda">
+                <div class="row" style="margin-bottom: 0;">
+                  <div class="col-33 text-center wrap" ng-if="proforma.descPeriodo">{{proforma.descPeriodo}}</div>
+                  <div class="col-33 text-center wrap" ng-if="!proforma.descPeriodo">--</div>
+                  <div class="col-33 text-center">{{proforma.concepto}}</div>
+                  <div class="col-33 text-right monto-deuda" ng-if="proforma.montoBs">{{proforma.montoBs}}</div>
+                  <div class="col-33 text-right monto-deuda" ng-if="!proforma.montoBs">--</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div ng-if="respuesta.beanDatosArbitrio.lstBeanDatosDeuda.length==0">
+            <div class="item item-content">
+              <div class="row marginbottom0">
+                <div class="col-90 calm margin-botom-close">El arbitrio no tiene deudas pendientes.</div>
+              </div>
+            </div>
+          </div>
+          <div ng-if="respuesta.observaciones.length>0">
+            <div class="item item-divider titulo_bloque">Observaciones</div>
+            <div class="item item-text-wrap" ng-repeat="observacion in respuesta.observaciones">
+              <div class="col-90 calm margin-botom-close">{{observacion}}</div>
+            </div>
+          </div>
+        </div>
+        <!--TODO: cementerio-->
+        <div ng-if="tasaElegida=='CE'">
+          <div class="item item-divider titulo_bloque">DATOS GENERALES</div>
+          <div class="item item-content">
+            <div class="row marginbottom0">
+              <div class="col-50 etiqueta">Cementerio</div>
+              <div class="col-50 calm wrap" ng-if="respuesta.beanDatosCementerio.bnDatosGralesSepultura.cementerio">{{respuesta.beanDatosCementerio.bnDatosGralesSepultura.cementerio}}</div>
+              <div class="col-33 text-center wrap" ng-if="!respuesta.beanDatosCementerio.bnDatosGralesSepultura.cementerio">--</div>
+            </div>
+            <div class="row marginbottom0">
+              <div class="col-50 etiqueta">Dirección Cementerio</div>
+              <div class="col-50 calm wrap" ng-if="respuesta.beanDatosCementerio.bnDatosGralesSepultura.direccion">{{respuesta.beanDatosCementerio.bnDatosGralesSepultura.direccion}}</div>
+              <div class="col-33 text-center wrap" ng-if="!respuesta.beanDatosCementerio.bnDatosGralesSepultura.direccion">--</div>
+            </div>
+            <div class="row marginbottom0">
+              <div class="col-50 etiqueta">Unidad Enterramiento</div>
+              <div class="col-50 calm wrap" ng-if="respuesta.beanDatosCementerio.bnDatosGralesSepultura.tipo">{{respuesta.beanDatosCementerio.bnDatosGralesSepultura.tipo}}</div>
+              <div class="col-33 text-center wrap" ng-if="!respuesta.beanDatosCementerio.bnDatosGralesSepultura.tipo">--</div>
+            </div>
+            <div class="row marginbottom0">
+              <div class="col-50 etiqueta">Modalidad de Uso</div>
+              <div class="col-50 calm wrap" ng-if="respuesta.beanDatosCementerio.bnDatosGralesSepultura.modalidadUso">{{respuesta.beanDatosCementerio.bnDatosGralesSepultura.modalidadUso}}</div>
+              <div class="col-33 text-center wrap" ng-if="!respuesta.beanDatosCementerio.bnDatosGralesSepultura.modalidadUso">--</div>
+            </div>
+            <div class="row marginbottom0">
+              <div class="col-50 etiqueta">Ubicación Concesión</div>
+              <div class="col-50 calm wrap" ng-if="respuesta.beanDatosCementerio.bnDatosGralesSepultura.ubicacion">{{respuesta.beanDatosCementerio.bnDatosGralesSepultura.ubicacion}}</div>
+              <div class="col-33 text-center wrap" ng-if="!respuesta.beanDatosCementerio.bnDatosGralesSepultura.ubicacion">--</div>
+            </div>
+          </div>
+
+          <div ng-if="respuesta.beanDatosCementerio.lstDeudasServicios.length>0">
+            <div class="item item-divider titulo_bloque">DATOS DEUDAS SERVICIO</div>
+            <div class="card text-right">
+              <label class="assertive textototal">Total Deuda (Bs.)</label>
+              <label class="calm montototal">{{respuesta.beanDatosCementerio.montoAcumuladoServicio}}</label>
+            </div>
+            <div class="card grillaDeuda">
+              <div class="item item-divider deuda">
+                <div class="row cabecera-tabla" style="margin-bottom: 0;">
+                  <div class="col-33 text-center">Gestión</div>
+                  <div class="col-33 text-center">Descripción</div>
+                  <div class="col-33 text-center">Monto (Bs.)</div>
+                </div>
+              </div>
+              <div class="item item-text-wrap deuda" ng-repeat="proforma in respuesta.beanDatosCementerio.lstDeudasServicios">
+                <div class="row" style="margin-bottom: 0;">
+                  <div class="col-33 text-center wrap" ng-if="proforma.periodo">{{proforma.periodo}}</div>
+                  <div class="col-33 text-center wrap" ng-if="!proforma.periodo">--</div>
+                  <div class="col-33 text-center">{{proforma.concepto}}</div>
+                  <div class="col-33 text-right monto-deuda" ng-if="proforma.montoBs">{{proforma.montoBs}}</div>
+                  <div class="col-33 text-right monto-deuda" ng-if="!proforma.montoBs">--</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="item item-divider titulo_bloque">DATOS DEUDAS</div>
+          <div ng-if="respuesta.beanDatosCementerio.lstDeudasGestiones.length>0">
+            <div class="card text-right">
+              <label class="assertive textototal">Total Deuda (Bs.)</label>
+              <label class="calm montototal">{{respuesta.beanDatosCementerio.montoAcumuladoGestion}}</label>
+            </div>
+            <div class="card grillaDeuda">
+              <div class="item item-divider deuda">
+                <div class="row cabecera-tabla">
+                  <div class="col-33 text-center">Periodo</div>
+                  <div class="col-33 text-center">Descripción</div>
+                  <div class="col-33 text-center">Monto (Bs.)</div>
+                </div>
+              </div>
+              <div class="item item-text-wrap deuda" ng-repeat="proforma in respuesta.beanDatosCementerio.lstDeudasGestiones">
+                <div class="row" style="margin-bottom: 0;">
+                  <div class="col-33 text-center wrap" ng-if="proforma.descPeriodo">{{proforma.descPeriodo}}</div>
+                  <div class="col-33 text-center wrap" ng-if="!proforma.descPeriodo">--</div>
+                  <div class="col-33 text-center">{{proforma.concepto}}</div>
+                  <div class="col-33 text-right monto-deuda" ng-if="proforma.montoBs">{{proforma.montoBs}}</div>
+                  <div class="col-33 text-right monto-deuda" ng-if="!proforma.montoBs">--</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div ng-if="respuesta.beanDatosCementerio.lstDeudasGestiones.length==0">
+            <div class="item item-content">
+              <div class="row marginbottom0">
+                <div class="col-90 calm margin-botom-close wrap">La sepultura del cementerio no tiene deudas a la fecha.</div>
+              </div>
+            </div>
+          </div>
+          <div ng-if="respuesta.observaciones.length>0">
+            <div class="item item-divider titulo_bloque">Observaciones</div>
+            <div class="item item-text-wrap" ng-repeat="observacion in respuesta.observaciones">
+              <div class="col-90 calm">{{observacion}}</div>
+            </div>
+          </div>
+        </div>
+
+
+  </ion-content>
+  <div class="btn-flotante">
+    <a class="btn-floating btn-large waves-effect waves-light btn-assertive" ng-click="show()" href="">
+      <i class="ion-plus"></i>
+    </a>
+  </div>
+</ion-view>

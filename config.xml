@@ -1,8 +1,16 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="io.ionic.starter" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="bo.gob.ruat" version="1.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>RUAT</name>
-    <description>An awesome Ionic/Cordova app.</description>
-    <author email="hi@ionicframework" href="http://ionicframework.com/">Ionic Framework Team</author>
+    <description>RUAT, es una aplicación móvil que permite consultar la Deuda Tributaria y Datos Técnicos de los objetos tributarios
+      que se encuentran registrados en los Gobiernos Municipales de Bolivia que utilizan el servicio del Registro Único
+      para la Administración Tributaria Municipal (RUAT); también proporciona información referente a las fechas de
+      vencimiento para el pago de Impuestos y Patentes Municipales de los diferentes rubros (Vehículos, Inmuebles,
+      Actividades Económicas) y las localizaciones de los puntos de cobro próximas a la ubicación actual del usuario.
+      Adicionalmente, en lo relacionado al rubro de Vehículos permite consultar los datos proporcionados por la Policía
+      Boliviana Nacional como datos de Gravámenes, Robo de Vehículos, Inspección Técnica Vehicular e Infracciones.</description>
+    <author email="acarrillo@mail.rua.net" href="http://www.ruat.gob.bo">
+    Alexeis Vladimir Carrillo Pinaya
+  </author>
     <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
@@ -81,4 +89,14 @@
     <plugin name="cordova-plugin-device" spec="1.1.4" />
     <plugin name="cordova-plugin-splashscreen" spec="~4.0.1" />
     <plugin name="cordova-plugin-ionic-webview" spec="^1.1.11" />
+    <plugin name="cordova-plugin-file-opener2" spec="^2.0.19" />
+    <plugin name="cordova.plugins.diagnostic" spec="^3.8.1" />
+    <plugin name="cordova-plugin-app-version" spec="^0.1.9" />
+    <plugin name="cordova-plugin-geolocation" spec="^4.0.1" />
+    <plugin name="cordova-plugin-inappbrowser" spec="^2.0.1" />
+    <plugin name="cordova-plugin-network-information" spec="^2.0.1" />
+    <plugin name="cordova-plugin-statusbar" spec="^2.4.1" />
+    <plugin name="cordova-sqlite-storage" spec="^2.1.5" />
+    <plugin name="phonegap-plugin-barcodescanner" spec="^7.0.0" />
+    <engine name="ios" spec="~4.5.4" />
 </widget>

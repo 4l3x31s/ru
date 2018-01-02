@@ -1,0 +1,34 @@
+<ion-view view-title="Vehículos">
+  <ion-content scroll="false">
+    <div class="contenedor scroll-content ionic-scroll overflow-scroll">
+        <form name="busGralForm" novalidate>
+          <div class="item item-image banner">
+            <img class="full-image" src="img/img_vehiculo.png">
+          </div>
+          <div class="btn-modulo">
+            <div class="btn-flotante">
+              <img src="img/ico_deuda_veh.png" width="90">
+            </div>
+          </div>
+          <br/>
+          <div class="row titulo-container">
+            <h4 class="col titulo">Consulta Deuda</h4>
+          </div>
+          <div class="list">
+            <label class="item item-input border-top0 item-floating-label">
+              <span class="input-label">Placa PTA</span>
+              <input name="placa" type="text" ng-pattern="validarLetrasNumeros" ng-value="placaGeneral" ng-minlength="6" ng-maxlength="8"
+                     maxlength="8" placeholder="Placa PTA. Ej(123ABC)" ng-model="placa"
+                     required>
+            </label>
+            <!--<span ng-show="busGralForm.placa.$error.maxlength" class="val-mensaje">El dato debe tener 8 caracteres como máximo.</span>
+            <span ng-show="busGralForm.placa.$error.pattern" class="val-mensaje">El dato no debe contener caracteres especiales.</span>-->
+          </div>
+          <button ng-disabled="busGralForm.$invalid" class="btn-floating btn-large waves-effect waves-light btn-assertive"
+                  ng-click="consultaDeuda(placa)" id="send">
+            <i class="ion-android-send"></i>
+          </button>
+        </form>
+    </div>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,36 @@
+<ion-view view-title="Vehículos">
+  <ion-content scroll="false">
+    <div class="contenedor scroll-content ionic-scroll overflow-scroll">
+        <form name="busDetForm" novalidate>
+          <div class="item item-image banner">
+            <img class="full-image" src="img/img-dt-veh.png">
+          </div>
+          <div class="btn-modulo">
+            <div class="btn-flotante">
+              <img src="img/ico_datos_veh.png" width="90">
+            </div>
+          </div>
+          <br/>
+          <div class="row titulo-container">
+            <h4 class="col titulo">Consulta Datos Técnicos</h4>
+          </div>
+          <div class="list">
+            <label class="item item-input border-top0 item-floating-label">
+              <span class="input-label etiqueta">Placa</span>
+              <input type="text" ng-pattern="validarLetrasNumeros" ng-value="placaRoot" ng-minlength="6" ng-maxlength="8" maxlength="8" minlength="6"placeholder="Placa. Ej(123ABC)"
+                     ng-model="placa" required>
+            </label>
+            <label class="item item-input border-top0 item-floating-label">
+              <span class="input-label etiqueta">Certificado de Propiedad</span>
+              <input ng-pattern="validarCrpva" type="text" ng-minlength="5" ng-maxlength="10" maxlength="10" placeholder="Certificado de Propiedad"
+                     ng-model="crpva" required>
+            </label>
+          </div>
+          <button ng-disabled="busDetForm.$invalid" class="btn-floating btn-large waves-effect waves-light btn-assertive"
+                  ng-click="consultaDetallada(placa,crpva)" id="send">
+            <i class="ion-android-send"></i>
+          </button>
+        </form>
+    </div>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,31 @@
+<ion-view view-title="Vehículos">
+  <ion-content scroll="true">
+
+    <div class="item item-image banner">
+      <img class="full-image" src="img/img_vehiculo.png">
+    </div>
+    <div class="btn-modulo">
+      <div class="btn-flotante">
+        <img src="img/ico_deuda_veh.png" width="90">
+      </div>
+    </div>
+    <br/>
+    <div class="row titulo-container">
+      <h4 class="col titulo">Consulta deuda</h4>
+    </div>
+    <form ng-submit="">
+      <div class="list">
+        <label class="item item-input border-top0 item-floating-label">
+          <span class="input-label">Placa</span>
+          <input type="text" placeholder="Placas - Ej. 123ABC">
+        </label>
+      </div>
+    </form>
+  </ion-content>
+  <div class="float-right">
+    <a class="btn-floating btn-large waves-effect waves-light btn-assertive" href="#/app/ve-datos-deuda">
+      <i class="ion-android-send"></i>
+    </a>
+  </div>
+
+</ion-view>

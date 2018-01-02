@@ -1,0 +1,21 @@
+<ion-view view-title="Comentarios">
+  <form name="busGralFormInm" novalidate>
+    <ion-content scroll="false">
+      <div class="list">
+        <span class="item item-input item-stacked-label"/>
+        <span class="wrap">Por favor, introduzca su comentario y/o sugerencia.</span>
+        <br><br>
+        <textarea type="text" cols="40" ng-model="txtComentario"
+                  rows="5" placeholder="Comentario" required>
+                </textarea>
+        </label>
+      </div>
+    </ion-content>
+    <div class="popup-buttons">
+      <button class="button button-assertive" ng-disabled="busGralFormInm.$invalid"
+              ng-click="buscarInmueble(txtComentario)">
+        Registrar
+      </button>
+    </div>
+  </form>
+</ion-view>

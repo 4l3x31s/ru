@@ -1,0 +1,131 @@
+<ion-view view-title="DATOS TÉCNICOS">
+  <ion-content scroll="true">
+
+        <div class="item item-divider titulo_bloque wrap">DATOS IDENTIFICACIÓN ACTIVIDAD ECONÓMICA</div>
+        <div class="item item-content">
+          <div class="row marginbottom0">
+            <div class="col-60 etiqueta">Número Actividad</div>
+            <div class="col-40 calm wrap" ng-if="identificacion.nroActividad">{{identificacion.nroActividad}}</div>
+            <div class="col-50 calm wrap" ng-if="!identificacion.nroActividad">--</div>
+          </div>
+          <div class="row marginbottom0">
+            <div class="col-60 etiqueta">Licencia</div>
+            <div class="col-40 calm wrap" ng-if="identificacion.nroLicencia">{{identificacion.nroLicencia}}</div>
+            <div class="col-50 calm wrap" ng-if="!identificacion.nroLicencia">--</div>
+          </div>
+          <div class="row marginbottom0">
+            <div class="col-60 etiqueta">Gobierno Municipal</div>
+            <div class="col-40 calm wrap">{{identificacion.gobiernoMunicipal}}</div>
+          </div>
+        </div>
+        <div class="item item-divider titulo_bloque wrap">DATOS CONTRIBUYENTE</div>
+        <div class="item item-content">
+          <div class="row marginbottom0">
+            <div class="col-60 etiqueta">Número Identificación</div>
+            <div class="col-40 calm wrap">{{datosPropietario.docIdentificacion}}</div>
+          </div>
+          <div class="row marginbottom0">
+            <div class="col-60 etiqueta">Nombre/Razón Social</div>
+            <div class="col-40 calm wrap" ng-if="datosPropietario.nombreRazonSocial">{{datosPropietario.nombreRazonSocial}}</div>
+            <div class="col-50 calm wrap" ng-if="!datosPropietario.nombreRazonSocial">--</div>
+          </div>
+        </div>
+        <div ng-if="datosActEcoConsulta">
+          <div class="item item-divider titulo_bloque wrap">DATOS ACTIVIDAD</div>
+          <div class="item item-content">
+            <div class="row marginbottom0">
+              <div class="col-60 etiqueta">Razón Social</div>
+              <div class="col-40 calm wrap" ng-if="datosActEcoConsulta.razonSocial">{{datosActEcoConsulta.razonSocial}}</div>
+              <div class="col-50 calm wrap" ng-if="!datosActEcoConsulta.razonSocial">--</div>
+            </div>
+            <div class="row marginbottom0">
+              <div class="col-60 etiqueta">Carácter Actividad</div>
+              <div class="col-40 calm wrap" ng-if="datosActEcoConsulta.razonSocial">{{datosActEcoConsulta.tipoActividad}}</div>
+              <div class="col-50 calm wrap" ng-if="!datosActEcoConsulta.razonSocial">--</div>
+            </div>
+            <div class="row marginbottom0">
+              <div class="col-60 etiqueta">NIT Actividad</div>
+              <div class="col-40 calm wrap" ng-if="datosActEcoConsulta.nit">{{datosActEcoConsulta.nit}}</div>
+              <div class="col-40 calm wrap" ng-if="!datosActEcoConsulta.nit">--</div>
+            </div>
+            <div class="row marginbottom0">
+              <div class="col-60 etiqueta wrap">Fecha Inicio Tributario</div>
+              <div class="col-40 calm wrap" ng-if="datosActEcoConsulta.fechaInicioTributario">{{datosActEcoConsulta.fechaInicioTributario}}</div>
+              <div class="col-50 calm wrap" ng-if="!datosActEcoConsulta.fechaInicioTributario">--</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="item item-divider titulo_bloque wrap">DATOS UBICACIÓN</div>
+        <div class="item item-content">
+          <div ng-repeat="grilla in grillaUbicacion">
+            <div class="row marginbottom0">
+              <div class="col-60 etiqueta wrap">{{grilla.llave}}</div>
+              <div class="col-40 calm wrap" ng-if="grilla.valor">{{grilla.valor}}</div>
+              <div class="col-50 calm wrap" ng-if="!grilla.valor">--</div>
+            </div>
+          </div>
+          <div class="row marginbottom0">
+            <div class="col-60 etiqueta">Tipo Lugar</div>
+            <div class="col-40 calm wrap" ng-if="datosUbicacion.descTipoLugar">{{datosUbicacion.descTipoLugar}}</div>
+            <div class="col-50 calm wrap" ng-if="!datosUbicacion.descTipoLugar">--</div>
+          </div>
+          <div class="row marginbottom0">
+            <div class="col-60 etiqueta">Nombre Lugar</div>
+            <div class="col-40 calm wrap" ng-if="datosUbicacion.descNombreLugar">{{datosUbicacion.descNombreLugar}}</div>
+            <div class="col-50 calm wrap" ng-if="!datosUbicacion.descNombreLugar">--</div>
+          </div>
+          <div class="row marginbottom0">
+            <div class="col-60 etiqueta">Número Puerta</div>
+            <div class="col-40 calm wrap" ng-if="datosUbicacion.numeropuerta">{{datosUbicacion.numeropuerta}}</div>
+            <div class="col-50 calm wrap" ng-if="!datosUbicacion.numeropuerta">--</div>
+          </div>
+          <div class="row marginbottom0">
+            <div class="col-60 etiqueta">Dirección Descriptiva</div>
+            <div class="col-40 calm wrap" ng-if="datosUbicacion.direcdescriptiva">{{datosUbicacion.direcdescriptiva}}</div>
+            <div class="col-50 calm wrap" ng-if="!datosUbicacion.direcdescriptiva">--</div>
+          </div>
+          <div class="row marginbottom0">
+            <div class="col-60 etiqueta">Nombre Edificio</div>
+            <div class="col-40 calm wrap" ng-if="datosUbicacion.edificio">{{datosUbicacion.edificio}}</div>
+            <div class="col-40 calm wrap" ng-if="!datosUbicacion.edificio">--</div>
+          </div>
+          <div class="row marginbottom0">
+            <div class="col-60 etiqueta">Bloque</div>
+            <div class="col-40 calm wrap" ng-if="datosUbicacion.bloque">{{datosUbicacion.bloque}}</div>
+            <div class="col-40 calm wrap" ng-if="!datosUbicacion.bloque">--</div>
+          </div>
+          <div class="row marginbottom0">
+            <div class="col-60 etiqueta">Piso</div>
+            <div class="col-40 calm wrap" ng-if="datosUbicacion.piso">{{datosUbicacion.piso}}</div>
+            <div class="col-40 calm wrap" ng-if="!datosUbicacion.piso">--</div>
+          </div>
+          <div class="row marginbottom0">
+            <div class="col-60 etiqueta">Departamento</div>
+            <div class="col-40 calm wrap" ng-if="datosUbicacion.departamento">{{datosUbicacion.departamento}}</div>
+            <div class="col-40 calm wrap" ng-if="!datosUbicacion.departamento">--</div>
+          </div>
+        </div>
+        <div class="item item-divider titulo_bloque wrap">DATOS PERIODO</div>
+        <div class="card">
+          <div class="item item-divider">
+            <div class="row marginbottom0 cabecera-tabla">
+              <div class="col-33 text-center wrap">Fecha Inicio Periodo</div>
+              <div class="col-33 text-center wrap">Fecha Fin Periodo</div>
+              <div class="col-33 text-center wrap">Superficie (m2)</div>
+            </div>
+          </div>
+          <div class="item item-text-wrap" ng-repeat="periodo in datosPeriodoActEco">
+            <div class="row marginbottom0 deuda" ng-click="mostrarDetallado(periodo)">
+              <div class="col-33 text-center">{{periodo.fechaInicioPeriodo}}</div>
+              <div class="col-33 text-center" ng-if="periodo.fechaFinPeriodo">{{periodo.fechaFinPeriodo}}</div>
+              <div class="col-33 text-center" ng-if="!periodo.fechaFinPeriodo">--</div>
+              <div class="col-33 text-center">{{periodo.superficie}}</div>
+              <span class="icon ion-chevron-right"></span>
+            </div>
+          </div>
+        </div>
+
+  </ion-content>
+
+</ion-view>

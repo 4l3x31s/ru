@@ -1,0 +1,181 @@
+  <ion-view view-title="DATOS DEUDAS">
+    <ion-content scroll="true">
+
+          <div class="item item-divider titulo_bloque">DATOS IDENTIFICACIÓN VEHÍCULO</div>
+          <div class="item item-content">
+            <div class="row marginbottom0">
+              <div class="col-67 etiqueta">Placa PTA</div>
+              <div class="col-32 calm">{{bnDatosVehiculo.pta| uppercase}}</div>
+            </div>
+            <div class="row marginbottom0">
+              <div class="col-67 etiqueta">Copia Válida Placa PTA</div>
+              <div class="col-32 calm">{{bnDatosVehiculo.nroCopiaPta}}</div>
+            </div>
+            <div class="row marginbottom0">
+              <div class="col-67 etiqueta">Póliza</div>
+              <div class="col-32 calm">{{bnDatosVehiculo.poliza}}</div>
+            </div>
+            <div class="row marginbottom0">
+              <div class="col-67 etiqueta">Placa Anterior</div>
+              <div class="col-32 calm">{{bnDatosVehiculo.placa}}</div>
+            </div>
+          </div>
+
+          <div class="item item-divider titulo_bloque">DATOS TÉCNICOS</div>
+          <div class="item item-content">
+            <div class="row marginbottom0">
+              <div class="col-67 etiqueta">Clase</div>
+              <div class="col-32 calm">{{bnDatosTecnicos.clase}}</div>
+            </div>
+            <div class="row marginbottom0">
+              <div class="col-67 etiqueta">Marca</div>
+              <div class="col-32 calm">{{bnDatosTecnicos.marca}}</div>
+            </div>
+            <div class="row marginbottom0">
+              <div class="col-67 etiqueta">Color</div>
+              <div class="col-32 calm">{{bnDatosTecnicos.color}}</div>
+            </div>
+            <div class="row marginbottom0">
+              <div class="col-67 etiqueta">Tipo</div>
+              <div class="col-32 calm">{{bnDatosTecnicos.tipo}}</div>
+            </div>
+            <div class="row marginbottom0">
+              <div class="col-67 etiqueta">Modelo</div>
+              <div class="col-32 calm">{{bnDatosTecnicos.modelo}}</div>
+            </div>
+            <div class="row marginbottom0">
+              <div class="col-67 etiqueta">Radicatoria</div>
+              <div class="col-32 calm wrap" ng-if="beanDatosBasicos.descAlcaldia">{{beanDatosBasicos.descAlcaldia}}</div>
+              <div class="col-32 calm" ng-if="!beanDatosBasicos.descAlcaldia">--</div>
+            </div>
+          </div>
+          <div ng-show="mostrarDeuda" style="margin-bottom: 50px;">
+            <div class="item item-divider titulo_bloque">DATOS DEUDAS</div>
+            <div ng-if="deudas">
+              <div class="card text-right">
+                <label class="assertive textototal">Total Deuda (Bs.)</label>
+                <label class="calm montototal" ng-if="montoTotal !== 0">{{montoTotal}}</label>
+                <label class="calm montototal" ng-if="montoTotal === 0">--</label>
+              </div>
+              <div class="card grillaDeuda">
+                <div class="item item-divider">
+                  <div class="row marginbottom0 cabecera-tabla">
+                    <div class="col-33 text-center">Gestión</div>
+                    <div class="col-33 text-center">Concepto</div>
+                    <div class="col-33 text-center">Monto (Bs.)</div>
+                  </div>
+                </div>
+                <div ng-if="deudas" class="item item-text-wrap deuda" ng-repeat="deuda in deudas">
+                  <div class="row marginbottom0" ng-click="popupDeuda(deuda)">
+                    <div class="col-33 text-center" ng-if="deuda.gestion">{{deuda.gestion}}</div>
+                    <div class="col-33 text-center" ng-if="!deuda.gestion">--</div>
+                    <div class="col-33 text-center">{{deuda.tipoImpuesto}}</div>
+                    <div class="col-33 text-right monto-deuda" ng-if="!deuda.montoBs || deuda.montoBs == '0'">--</div>
+                    <span class="icon ion-chevron-right" ng-if="!deuda.montoBs"></span>
+                    <div class="col-33 text-right monto-deuda" ng-if="deuda.montoBs !== '0'">{{deuda.montoBs}}</div>
+                    <span class="icon ion-chevron-right"></span>
+                  </div>
+                </div>
+
+              </div>
+              <div class="row marginbottom0">
+                <label class="txtsmall balanced">IP - Impuesto Municipal a la Propiedad de Vehículos Automotores Terrestres</label>
+              </div>
+              <div class="row marginbottom0">
+                <label class="txtsmall balanced">IM - Impuesto Municipal a las Transferencias Onerosas</label>
+              </div>
+              <div class="row marginbottom0">
+                <label class="txtsmall balanced">RE - Recibos</label>
+              </div>
+              <div class="row marginbottom0">
+                <label class="txtsmall balanced">MP - Multa por Omisión de Pago IMPVA</label>
+              </div>
+              <div class="row marginbottom0">
+                <label class="txtsmall balanced">MT - Multa por Omisión de Pago al Impuesto Municipal a la Transferencia</label>
+              </div>
+              <div class="row marginbottom0">
+                <label class="txtsmall balanced">NR - Vehículo no reemplacado</label>
+              </div>
+              <div class="row marginbottom0">
+                <label class="txtsmall balanced">MI - Multa por Incumplimiento a Deberes Formales IPVA (MI) </label>
+              </div>
+              <div class="row marginbottom0">
+                <label class="txtsmall balanced">MF - Multa por Incumplimiento a Deberes Formales IMT (MI) </label>
+              </div>
+              <br>
+
+            </div>
+            <div ng-if="!deudas" class="item item-body">
+              <div class="item item-content">
+                <div class="row marginbottom0 txtObservacion">
+                  El vehículo no tiene deudas a la fecha.
+                </div>
+              </div>
+            </div>
+            <div ng-if="mensajeDeudaPendiente">
+              <div class="item item-divider titulo_bloque wrap">DEUDAS PENDIENTES DE LIQUIDACIÓN</div>
+              <div class="card">
+                <div class="item item-content">
+                  <div ng-repeat="mensajeDeuda in mensajeDeudaPendiente" class="row marginbottom0 txtObservacion wrap">{{mensajeDeuda}}<br></div>
+                </div>
+              </div>
+            </div>
+            <div ng-if="observaciones">
+              <div class="item item-divider titulo_bloque">OBSERVACIONES</div>
+              <div class="card">
+                <div ng-repeat="observacion in observaciones" >
+                  <div class="item item-body txtObservacion" ng-bind-html="observacion"></div>
+                </div>
+              </div>
+            </div>
+            <div ng-if="estado">
+              <div class="item item-divider titulo_bloque">ESTADO VEHÍCULO</div>
+              <div class="card">
+                <div class="item item-body txtObservacion" ng-bind-html="estado"></div>
+              </div>
+            </div>
+          </div>
+
+          <div ng-show="mostrarInfraccion" style="margin-bottom: 50px;">
+            <div class="item item-divider titulo_bloque">DATOS DEUDAS INFRACCIONES E ITV</div>
+            <div class="item item-body txtObservacion" style="border: none;padding-bottom: 0;">
+              La información registrada corresponde a la Policía Boliviana Nacional.
+            </div>
+            <div ng-if="infracciones">
+              <div class="card text-right">
+                <label class="assertive textototal">Total Deuda (Bs.)</label>
+                <label class="calm montototal">{{montoInfTotal}}</label>
+              </div>
+              <div class="card grillaDeuda">
+                <div class="item item-divider">
+                  <div class="row marginbottom0 cabecera-tabla">
+                    <div class="col-33 text-center">Gestión/Fecha</div>
+                    <div class="col-33 text-center">Boleta</div>
+                    <div class="col-33 text-center">Monto (Bs.)</div>
+                  </div>
+                </div>
+                <div class="item item-text-wrap deuda" ng-repeat="infraccion in infracciones">
+                  <div class="row marginbottom0" ng-click="popup(infraccion)">
+                    <div class="col-33 text-center" ng-if="!infraccion.gestion==''">{{infraccion.gestion}}</div>
+                    <div class="col-33 text-center" ng-if="infraccion.gestion==''">{{infraccion.fecha}}</div>
+                    <div class="col-33 text-center">{{infraccion.boleta}}</div>
+                    <div class="col-33 text-right monto-deuda">{{infraccion.monto}}</div>
+                    <span class="icon ion-chevron-right"></span>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+            <div ng-if="!infracciones" class="item item-body txtObservacion margin-botom-close">
+              El vehículo no tiene infracciones.
+            </div>
+          </div>
+
+
+    </ion-content>
+    <div class="btn-flotante">
+      <button class="btn-floating btn-large waves-effect waves-light btn-assertive" ng-click="show()" >
+        <i class="ion-plus"></i>
+      </button>
+    </div>
+  </ion-view>
