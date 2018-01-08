@@ -1,6 +1,6 @@
 {
   "name": "RUAT",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "RUAT, es una aplicación móvil que permite consultar la Deuda Tributaria y Datos Técnicos de los objetos tributarios que se encuentran registrados en los Gobiernos Municipales de Bolivia que utilizan el servicio del Registro Único para la Administración Tributaria Municipal (RUAT); también proporciona información referente a las fechas de vencimiento para el pago de Impuestos y Patentes Municipales de los diferentes rubros (Vehículos, Inmuebles, Actividades Económicas) y las localizaciones de los puntos de cobro próximas a la ubicación actual del usuario. Adicionalmente, en lo relacionado al rubro de Vehículos permite consultar los datos proporcionados por la Policía Boliviana Nacional como datos de Gravámenes, Robo de Vehículos, Inspección Técnica Vehicular e Infracciones.",
   "devDependencies": {
     "gulp": "^3.5.6",
@@ -24,7 +24,8 @@
     "cordova-sqlite-storage": "^2.1.5",
     "cordova.plugins.diagnostic": "^3.8.1",
     "ionic-plugin-keyboard": "^2.2.1",
-    "phonegap-plugin-barcodescanner": "^7.0.0"
+    "phonegap-plugin-barcodescanner": "^7.0.0",
+    "cordova-android": "~6.4.0"
   },
   "cordova": {
     "plugins": {
@@ -44,6 +45,7 @@
       "cordova-plugin-ionic-webview": {}
     },
     "platforms": [
+      "android",
       "ios"
     ]
   }
